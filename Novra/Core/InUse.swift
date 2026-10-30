@@ -22,14 +22,15 @@ struct OpenFiles: Sendable {
         var pairs: [(String, String)] = []
         var command = ""
         var skip = false
-        let home = Cleaner.home.path + "/"
+        // Your files, and apps in /Applications (a running app keeps its own frameworks open).
+        let roots = [Cleaner.home.path + "/", "/Applications/"]
         for line in result.output.split(separator: "\n") {
             guard let tag = line.first else { continue }
             let value = String(line.dropFirst())
             switch tag {
             case "p": skip = Int32(value) == ownPID
             case "c": command = value
-            case "n" where !skip && value.hasPrefix(home): pairs.append((value, command))
+            case "n" where !skip && roots.contains(where: value.hasPrefix): pairs.append((value, command))
             default: break
             }
         }

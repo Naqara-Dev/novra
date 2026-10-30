@@ -57,6 +57,16 @@
         }
       }
     },
+    "%@ is open. Quit it first.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ sedang terbuka. Tutup dulu."
+          }
+        }
+      }
+    },
     "%@ left": {
       "localizations": {
         "id": {
@@ -101,6 +111,16 @@
     },
     "%lld": {
       "shouldTranslate": false
+    },
+    "%lld cache folder(s)": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld folder cache"
+          }
+        }
+      }
     },
     "%lld copies of %@": {
       "localizations": {

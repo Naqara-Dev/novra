@@ -85,10 +85,14 @@ enum ExtraScanners {
 
     /// Chromium browsers keep the previous version inside the app after updating.
     static func oldBrowserVersions() -> [JunkItem] {
-        let apps = [("Google Chrome", "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions"),
-                    ("Microsoft Edge", "/Applications/Microsoft Edge.app/Contents/Frameworks/Microsoft Edge Framework.framework/Versions"),
-                    ("Brave", "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions")]
-        return apps.compactMap { name, path in
+        let apps = [("Google Chrome", "com.google.Chrome", "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions"),
+                    ("Microsoft Edge", "com.microsoft.edgemac", "/Applications/Microsoft Edge.app/Contents/Frameworks/Microsoft Edge Framework.framework/Versions"),
+                    ("Brave", "com.brave.Browser", "/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions")]
+        let running = Set(NSWorkspace.shared.runningApplications.compactMap(\.bundleIdentifier))
+        return apps.compactMap { name, bundleID, path in
+            // After a background update, the "old" version is the one the open browser runs on:
+            // every new tab starts a helper from it. Never offer it while the browser is open.
+            guard !running.contains(bundleID) else { return nil }
             let folder = URL(filePath: path)
             let current = folder.appending(path: "Current").resolvingSymlinksInPath().path
             let old = FileSizer.children(of: folder).filter {
@@ -96,7 +100,7 @@ enum ExtraScanners {
                     && (try? $0.resourceValues(forKeys: [.isSymbolicLinkKey]).isSymbolicLink) != true
             }
             guard !old.isEmpty else { return nil }
-            return JunkItem(name: "Old \(name) version", note: "Left behind by the last update. Quit \(name) first.",
+            return JunkItem(name: "Old \(name) version", note: "Left behind by the last update.",
                             urls: old, size: old.map { FileSizer.size($0) }.sum, selectedByDefault: false)
         }
     }

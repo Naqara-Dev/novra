@@ -347,20 +347,20 @@ enum JunkScanner {
 
     private static func scanBrowsers(progress: Progress) -> [JunkItem] {
         let support = library.appending(path: "Application Support")
-        let chromium: [(String, String, String)] = [
-            ("Google Chrome", "Google/Chrome", "Google/Chrome"),
-            ("Brave", "BraveSoftware/Brave-Browser", "BraveSoftware/Brave-Browser"),
-            ("Microsoft Edge", "Microsoft Edge", "Microsoft Edge"),
-            ("Arc", "Arc", "Arc/User Data"),
-            ("Vivaldi", "Vivaldi", "Vivaldi"),
-            ("Opera", "com.operasoftware.Opera", "com.operasoftware.Opera"),
+        let chromium: [(String, String, String, String)] = [
+            ("Google Chrome", "com.google.Chrome", "Google/Chrome", "Google/Chrome"),
+            ("Brave", "com.brave.Browser", "BraveSoftware/Brave-Browser", "BraveSoftware/Brave-Browser"),
+            ("Microsoft Edge", "com.microsoft.edgemac", "Microsoft Edge", "Microsoft Edge"),
+            ("Arc", "company.thebrowser.Browser", "Arc", "Arc/User Data"),
+            ("Vivaldi", "com.vivaldi.Vivaldi", "Vivaldi", "Vivaldi"),
+            ("Opera", "com.operasoftware.Opera", "com.operasoftware.Opera", "com.operasoftware.Opera"),
         ]
-        var browsers: [(String, [URL])] = [
-            ("Safari", [caches.appending(path: "com.apple.Safari"),
-                        library.appending(path: "Containers/com.apple.Safari/Data/Library/Caches")]),
-            ("Firefox", [caches.appending(path: "Firefox/Profiles")]),
+        var browsers: [(String, String, [URL])] = [
+            ("Safari", "com.apple.Safari", [caches.appending(path: "com.apple.Safari"),
+                                            library.appending(path: "Containers/com.apple.Safari/Data/Library/Caches")]),
+            ("Firefox", "org.mozilla.firefox", [caches.appending(path: "Firefox/Profiles")]),
         ]
-        for (name, cacheDir, profileRoot) in chromium {
+        for (name, bundleID, cacheDir, profileRoot) in chromium {
             var urls = [caches.appending(path: cacheDir)]
             if name == "Arc" { urls.append(caches.appending(path: "company.thebrowser.Browser")) }
             // Per-profile code and GPU caches live outside ~/Library/Caches.
@@ -369,17 +369,22 @@ enum JunkScanner {
                     urls.append(profile.appending(path: sub))
                 }
             }
-            browsers.append((name, urls))
+            browsers.append((name, bundleID, urls))
         }
 
+        // Clearing a browser's code and GPU caches under it can break new tabs until it restarts,
+        // so an open browser's row starts unticked.
+        let running = Set(NSWorkspace.shared.runningApplications.compactMap(\.bundleIdentifier))
         var items: [JunkItem] = []
-        for (index, (name, urls)) in browsers.enumerated() {
+        for (index, (name, bundleID, urls)) in browsers.enumerated() {
             let existing = urls.filter { FileManager.default.fileExists(atPath: $0.path) }
             guard !existing.isEmpty else { continue }
             progress(existing[0].path, Double(index) / Double(browsers.count))
             let size = existing.map { FileSizer.size($0) }.sum
-            items.append(JunkItem(name: name, note: "\(existing.count) cache folder\(existing.count == 1 ? "" : "s")",
-                                  urls: existing, size: size, selectedByDefault: true))
+            let isOpen = running.contains(bundleID)
+            let folders = String(localized: "\(existing.count) cache folder(s)")
+            let note = isOpen ? folders + " · " + String(localized: "\(name) is open. Quit it first.") : folders
+            items.append(JunkItem(name: name, note: note, urls: existing, size: size, selectedByDefault: !isOpen))
         }
         return items
     }
