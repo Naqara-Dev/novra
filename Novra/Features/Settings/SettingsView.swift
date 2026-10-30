@@ -14,6 +14,7 @@ struct SettingsView: View {
 
 private struct GeneralSettings: View {
     @AppStorage(Prefs.Key.defaultToTrash) private var toTrash = true
+    @AppStorage(Prefs.Key.checkForUpdates) private var checkForUpdates = true
     @AppStorage(Prefs.Key.staleDays) private var staleDays = 90
     @State private var language = Locale.preferredLanguages.first?.hasPrefix("id") == true ? "id" : "en"
     @State private var languageChanged = false
@@ -33,6 +34,12 @@ private struct GeneralSettings: View {
                 }
             } footer: {
                 Text("Novra never removes anything without asking. These only change what's ticked and offered by default.")
+                    .font(.system(size: 11)).foregroundStyle(.secondary)
+            }
+            SwiftUI.Section {
+                Toggle("Check for updates automatically", isOn: $checkForUpdates)
+            } footer: {
+                Text("Once a day Novra asks GitHub for the latest version number. Nothing about you or your Mac is sent.")
                     .font(.system(size: 11)).foregroundStyle(.secondary)
             }
             SwiftUI.Section {
@@ -144,13 +151,22 @@ private struct AboutSettings: View {
             Text("Novra").font(.system(size: 22, weight: .bold))
             Text("Version \(version)").foregroundStyle(.secondary)
             Text("Novra finds it. You decide what goes.").font(.system(size: 13, weight: .medium))
-            Text("Novra makes no network requests. No analytics, no tracking, nothing leaves your Mac.")
+            Text("No analytics, no tracking, and your files never leave your Mac. The only connection Novra makes is the optional update check.")
                 .font(.system(size: 12)).foregroundStyle(.secondary).multilineTextAlignment(.center).frame(maxWidth: 380)
             HStack(spacing: 14) {
-                Button("Check for Updates") { SystemInfo.open(SystemInfo.releases) }
+                Button("Check for Updates") { Task { await Updates.shared.check(manual: true) } }
+                    .disabled(Updates.shared.checking)
                 Button("GitHub") { SystemInfo.open(SystemInfo.repository) }
                 Button("Report an Issue") { SystemInfo.open(SystemInfo.issues) }
                 Button("naqara.dev") { SystemInfo.open("https://naqara.dev") }
+            }
+            if let status = Updates.shared.status {
+                HStack(spacing: 8) {
+                    Text(status).font(.system(size: 12))
+                    if Updates.shared.available != nil {
+                        Button("Download") { Updates.shared.download() }.buttonStyle(.link)
+                    }
+                }
             }
             Text("Novra is open source under the MIT license.")
                 .font(.system(size: 11.5)).foregroundStyle(.secondary)

@@ -360,7 +360,7 @@ struct FullDiskAccessBanner: View {
             Image(systemName: "lock.shield").font(.system(size: 20)).foregroundStyle(Theme.lavender)
             VStack(alignment: .leading, spacing: 2) {
                 Text("Give Novra Full Disk Access").font(.system(size: 13, weight: .semibold))
-                Text("Lets Novra also look at Safari, Mail and Trash. Novra has no internet access; nothing leaves your Mac.")
+                Text("Lets Novra also look at Safari, Mail and Trash. Your files never leave your Mac.")
                     .font(.system(size: 11.5)).foregroundStyle(Theme.secondary)
             }
             Spacer()

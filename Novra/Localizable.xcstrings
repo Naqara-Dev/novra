@@ -834,6 +834,36 @@
         }
       }
     },
+    "Check for Updates…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cek Pembaruan…"
+          }
+        }
+      }
+    },
+    "Check for updates": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cek pembaruan"
+          }
+        }
+      }
+    },
+    "Check for updates automatically": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cek pembaruan secara otomatis"
+          }
+        }
+      }
+    },
     "Checked while Novra is running, at most once every few hours.": {
       "localizations": {
         "id": {
@@ -1141,6 +1171,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gagal membuka riwayat"
+          }
+        }
+      }
+    },
+    "Couldn't reach GitHub. Try again later.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak bisa menghubungi GitHub. Coba lagi nanti."
           }
         }
       }
@@ -1467,6 +1507,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Selesai"
+          }
+        }
+      }
+    },
+    "Download": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unduh"
           }
         }
       }
@@ -2226,6 +2276,16 @@
         }
       }
     },
+    "Later": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nanti"
+          }
+        }
+      }
+    },
     "Launch Agents": {
       "localizations": {
         "id": {
@@ -2257,11 +2317,22 @@
       }
     },
     "Lets Novra also look at Safari, Mail and Trash. Novra has no internet access; nothing leaves your Mac.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
             "value": "Agar Novra juga bisa memeriksa Safari, Mail dan Tong Sampah. Novra tidak memakai internet; tidak ada data yang keluar dari Mac Anda."
+          }
+        }
+      }
+    },
+    "Lets Novra also look at Safari, Mail and Trash. Your files never leave your Mac.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar Novra juga bisa memeriksa Safari, Mail dan Tong Sampah. File Anda tidak pernah keluar dari Mac."
           }
         }
       }
@@ -2610,6 +2681,16 @@
         }
       }
     },
+    "No analytics, no tracking, and your files never leave your Mac. The only connection Novra makes is the optional update check.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanpa analitik, tanpa pelacakan, dan file Anda tidak pernah keluar dari Mac. Satu-satunya koneksi Novra adalah cek pembaruan yang bisa dimatikan."
+          }
+        }
+      }
+    },
     "No duplicates": {
       "localizations": {
         "id": {
@@ -2843,6 +2924,36 @@
     "Novra": {
       "shouldTranslate": false
     },
+    "Novra %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra %@"
+          }
+        }
+      }
+    },
+    "Novra %@ is available": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra %@ sudah tersedia"
+          }
+        }
+      }
+    },
+    "Novra %@ is available.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra %@ sudah tersedia."
+          }
+        }
+      }
+    },
     "Novra can't see your photos": {
       "localizations": {
         "id": {
@@ -2884,6 +2995,7 @@
       }
     },
     "Novra makes no network requests. No analytics, no tracking, nothing leaves your Mac.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
@@ -2894,6 +3006,7 @@
       }
     },
     "Novra makes no network requests. No analytics, no tracking.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
@@ -3041,6 +3154,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aktif setelah login berikutnya"
+          }
+        }
+      }
+    },
+    "Once a day Novra asks GitHub for the latest version number. Nothing about you or your Mac is sent.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sekali sehari Novra menanyakan nomor versi terbaru ke GitHub. Tidak ada data tentang Anda atau Mac Anda yang dikirim."
+          }
+        }
+      }
+    },
+    "Once a day, asks GitHub for the latest version number. Nothing else is sent.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sekali sehari, menanyakan nomor versi terbaru ke GitHub. Tidak ada yang lain yang dikirim."
           }
         }
       }
@@ -4146,6 +4279,16 @@
         }
       }
     },
+    "Skip this version": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lewati versi ini"
+          }
+        }
+      }
+    },
     "Small fixes and power tools. Each one says what it does before it does it.": {
       "localizations": {
         "id": {
@@ -4563,6 +4706,16 @@
         }
       }
     },
+    "Update available": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pembaruan tersedia"
+          }
+        }
+      }
+    },
     "Updates live. macOS uses spare memory as cache, so “free” is usually small, and that's fine.": {
       "localizations": {
         "id": {
@@ -4674,6 +4827,16 @@
         }
       }
     },
+    "What's new": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yang baru"
+          }
+        }
+      }
+    },
     "When removing": {
       "localizations": {
         "id": {
@@ -4734,6 +4897,16 @@
         }
       }
     },
+    "You have version %@. Download the new version from GitHub?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda memakai versi %@. Unduh versi baru dari GitHub?"
+          }
+        }
+      }
+    },
     "You kept everything.": {
       "localizations": {
         "id": {
@@ -4774,6 +4947,16 @@
         }
       }
     },
+    "You're up to date (version %@).": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra sudah versi terbaru (%@)."
+          }
+        }
+      }
+    },
     "Your Mac is almost full": {
       "localizations": {
         "id": {
@@ -4800,6 +4983,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Disk Anda sehat"
+          }
+        }
+      }
+    },
+    "Your files are never uploaded. No analytics, no tracking. The only connection is an optional update check.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File Anda tidak pernah diunggah. Tanpa analitik, tanpa pelacakan. Satu-satunya koneksi adalah cek pembaruan yang bisa dimatikan."
           }
         }
       }

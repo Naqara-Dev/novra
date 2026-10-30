@@ -13,7 +13,7 @@
 <p align="center">
   <img alt="macOS 14+" src="https://img.shields.io/badge/macOS-14%2B-3D7BF7">
   <img alt="Swift 6" src="https://img.shields.io/badge/Swift-6-F05138">
-  <img alt="No network access" src="https://img.shields.io/badge/network-none-32D583">
+  <img alt="No tracking" src="https://img.shields.io/badge/tracking-none-32D583">
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-A9B8FF">
 </p>
 
@@ -31,7 +31,7 @@ Most cleaners show one big number and a big button. Novra shows you the list beh
 - **You see what it is.** Each category explains what will change if you clean it. For example, clearing browser cache keeps you signed in.
 - **Reversible by default.** Removals go to the Trash. History records every clean, so you can restore anything that's still in the Trash.
 - **Knows when something is in use.** "Unused" is based on when files were last *read*, not only changed. Running apps show as running. Android SDK images are checked against your emulators, and helpers are checked against the daemons that launch them.
-- **Private.** Novra makes no network requests: no analytics, no telemetry, no update pings.
+- **Private.** Your files never leave your Mac. There are no analytics and no telemetry. The only connection Novra makes is an optional daily update check (see below).
 
 ## Features
 
@@ -83,6 +83,14 @@ Or from the command line:
 xcodebuild -project Novra.xcodeproj -scheme Novra -configuration Release -derivedDataPath build build
 open build/Build/Products/Release/Novra.app
 ```
+
+## Updates
+
+Once a day, Novra asks GitHub's public API for the latest release number
+(`api.github.com/repos/Naqara-Dev/novra/releases/latest`). It uses an ephemeral session with no cookies or IDs,
+and sends nothing about you or your Mac. If a newer version exists, a small card in the sidebar links to the download.
+You can also check from **Novra › Check for Updates…**, or turn the automatic check off in
+**Settings › General** or during onboarding.
 
 ## Permissions, and why
 

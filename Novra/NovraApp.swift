@@ -11,12 +11,18 @@ struct NovraApp: App {
                 .environment(state)
                 .preferredColorScheme(.dark)
                 .frame(minWidth: 1040, minHeight: 680)
-                .onAppear { LowDiskWatcher.shared.start() }
+                .onAppear {
+                    LowDiskWatcher.shared.start()
+                    Updates.shared.start()
+                }
         }
         .windowStyle(.hiddenTitleBar)
         .defaultSize(width: 1180, height: 760)
         .commands {
             CommandGroup(replacing: .newItem) {}
+            CommandGroup(after: .appInfo) {
+                Button("Check for Updates…") { Updates.shared.checkFromMenu() }
+            }
             CommandGroup(replacing: .help) {
                 Button("Novra on GitHub") { SystemInfo.open(SystemInfo.repository) }
                 Button("Report an Issue") { SystemInfo.open(SystemInfo.issues) }

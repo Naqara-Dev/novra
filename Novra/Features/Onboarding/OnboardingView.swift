@@ -6,6 +6,7 @@ struct OnboardingView: View {
     @State private var hasAccess = SystemInfo.hasFullDiskAccess
     @AppStorage(Prefs.Key.menuBarEnabled) private var menuBar = false
     @AppStorage(Prefs.Key.lowDiskAlert) private var lowDiskAlert = false
+    @AppStorage(Prefs.Key.checkForUpdates) private var checkForUpdates = true
     private let pages = 4
 
     var body: some View {
@@ -75,7 +76,7 @@ struct OnboardingView: View {
             point("eye", "You see everything first", "Every file Novra finds is listed with its size and what it's for.", 0.08)
             point("checkmark.shield", "Nothing goes without your OK", "Removing always asks first, and goes to the Trash by default.", 0.16)
             point("info.circle", "You know what happens next", "Each kind of junk tells you what changes after cleaning it.", 0.24)
-            point("wifi.slash", "Nothing leaves your Mac", "Novra makes no network requests. No analytics, no tracking.", 0.32)
+            point("lock.shield", "Nothing leaves your Mac", "Your files are never uploaded. No analytics, no tracking. The only connection is an optional update check.", 0.32)
         }
         .padding(44)
     }
@@ -133,6 +134,9 @@ struct OnboardingView: View {
                 Divider().overlay(Theme.stroke)
                 optionRow("Warn me when the disk is almost full", "Only while Novra is open. You can change this in Settings.",
                           isOn: $lowDiskAlert)
+                Divider().overlay(Theme.stroke)
+                optionRow("Check for updates", "Once a day, asks GitHub for the latest version number. Nothing else is sent.",
+                          isOn: $checkForUpdates)
             }
             .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Theme.card))
             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(Theme.stroke))

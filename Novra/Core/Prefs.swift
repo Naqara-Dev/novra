@@ -10,6 +10,7 @@ enum Prefs {
         static let lowDiskAlert = "lowDiskAlert"
         static let lowDiskGB = "lowDiskGB"
         static let onboarded = "onboarded"
+        static let checkForUpdates = "checkForUpdates"
     }
 
     private static var defaults: UserDefaults { .standard }
@@ -30,6 +31,9 @@ enum Prefs {
         default: String(localized: "Unused 3+ months")
         }
     }
+
+    /// On unless turned off; asked during onboarding.
+    static var checkForUpdates: Bool { defaults.object(forKey: Key.checkForUpdates) as? Bool ?? true }
 
     static var lowDiskGB: Int {
         let value = defaults.integer(forKey: Key.lowDiskGB)

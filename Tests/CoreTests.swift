@@ -34,6 +34,7 @@ enum CoreTests {
         glob()
         shredder()
         sizeParsing()
+        versions()
 
         print(failures == 0 ? "✓ all \(passes) checks passed" : "\(failures) failed, \(passes) passed")
         exit(failures == 0 ? 0 : 1)
@@ -154,5 +155,15 @@ extension CoreTests {
         let brew = "==> This operation has freed approximately 120.5MB of disk space."
         check(abs(Double(Shell.parseSizes(brew, marker: "freed approximately")) - 120.5e6) < 1e3, "reads Homebrew's freed space")
         check(Shell.parseSizes("Total reclaimed space: 0B", marker: "reclaimed space") == 0, "zero stays zero")
+    }
+}
+
+extension CoreTests {
+    static func versions() {
+        check(Updates.isNewer("1.1", than: "1.0"), "1.1 is newer than 1.0")
+        check(Updates.isNewer("1.10", than: "1.9"), "1.10 is newer than 1.9")
+        check(!Updates.isNewer("1.1.0", than: "1.1"), "1.1.0 equals 1.1")
+        check(!Updates.isNewer("1.0", than: "1.1"), "older is not newer")
+        check(Updates.isNewer("2.0", than: "1.99.9"), "major beats minor")
     }
 }

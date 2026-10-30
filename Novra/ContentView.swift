@@ -84,6 +84,13 @@ private struct Sidebar: View {
 
             Spacer()
 
+            if let release = Updates.shared.available {
+                UpdateCard(release: release)
+                    .padding(.horizontal, 14)
+                    .padding(.bottom, 16)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+
             diskSummary
                 .padding(.horizontal, 22)
                 .padding(.bottom, 14)
@@ -186,5 +193,40 @@ private struct SidebarItem: View {
         }
         .buttonStyle(.plain)
         .onHover { hover = $0 }
+    }
+}
+
+private struct UpdateCard: View {
+    var release: Updates.Release
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Image(systemName: "arrow.down.circle.fill").foregroundStyle(Theme.accent)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Update available").font(.system(size: 12, weight: .semibold))
+                    Text("Novra \(release.version)").font(.system(size: 11)).foregroundStyle(Theme.secondary)
+                }
+                Spacer()
+                Button { Updates.shared.skip() } label: {
+                    Image(systemName: "xmark").font(.system(size: 9, weight: .bold)).foregroundStyle(Theme.tertiary)
+                }
+                .buttonStyle(.plain)
+                .help("Skip this version")
+            }
+            HStack(spacing: 10) {
+                Button("Download") { Updates.shared.download() }
+                    .buttonStyle(.plain)
+                    .font(.system(size: 11.5, weight: .semibold))
+                    .foregroundStyle(Theme.accent)
+                Button("What's new") { NSWorkspace.shared.open(release.page) }
+                    .buttonStyle(.plain)
+                    .font(.system(size: 11.5))
+                    .foregroundStyle(Theme.secondary)
+            }
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Theme.accent.opacity(0.12)))
+        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Theme.accent.opacity(0.3)))
     }
 }
