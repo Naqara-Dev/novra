@@ -1,0 +1,4996 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "": {
+      "shouldTranslate": false
+    },
+    " ": {
+      "shouldTranslate": false
+    },
+    "%": {
+      "shouldTranslate": false
+    },
+    "%.0f GB": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%.0f GB"
+          }
+        }
+      }
+    },
+    "%@ %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ %2$@"
+          }
+        }
+      },
+      "shouldTranslate": false
+    },
+    "%@ extra": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ berlebih"
+          }
+        }
+      }
+    },
+    "%@ free of %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ free of %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ kosong dari %2$@"
+          }
+        }
+      }
+    },
+    "%@ left": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sisa %@"
+          }
+        }
+      }
+    },
+    "%@ of %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ of %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dari %2$@"
+          }
+        }
+      }
+    },
+    "%@ · %lld items": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ · %2$lld items"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$lld item"
+          }
+        }
+      }
+    },
+    "%lld": {
+      "shouldTranslate": false
+    },
+    "%lld copies of %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld copies of %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld salinan %2$@"
+          }
+        }
+      }
+    },
+    "%lld item(s) couldn't be removed. They may be in use or protected.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld item tidak bisa dihapus. Mungkin sedang dipakai atau dilindungi."
+          }
+        }
+      }
+    },
+    "%lld items belong to apps that are gone": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld item milik aplikasi yang sudah dihapus"
+          }
+        }
+      }
+    },
+    "%lld items · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld items · %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld item · %2$@"
+          }
+        }
+      }
+    },
+    "%lld marked for deletion · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld marked for deletion · %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld ditandai untuk dihapus · %2$@"
+          }
+        }
+      }
+    },
+    "%lld of %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld of %2$lld"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld dari %2$lld"
+          }
+        }
+      }
+    },
+    "%lld projects · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld projects · %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld proyek · %2$@"
+          }
+        }
+      }
+    },
+    "%lld selected": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dipilih"
+          }
+        }
+      }
+    },
+    "%lld sets of identical files · %@ in extra copies": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld sets of identical files · %2$@ in extra copies"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld kelompok file identik · %2$@ salinan berlebih"
+          }
+        }
+      }
+    },
+    "%lld to delete · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld to delete · %2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld akan dihapus · %2$@"
+          }
+        }
+      }
+    },
+    "%lld · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld · %2$@"
+          }
+        }
+      },
+      "shouldTranslate": false
+    },
+    "%lld%%": {
+      "shouldTranslate": false
+    },
+    "1 month": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 bulan"
+          }
+        }
+      }
+    },
+    "1 year": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 tahun"
+          }
+        }
+      }
+    },
+    "10 GB": {
+      "shouldTranslate": false
+    },
+    "20 GB": {
+      "shouldTranslate": false
+    },
+    "3 months": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 bulan"
+          }
+        }
+      }
+    },
+    "3 months+": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3+ bulan"
+          }
+        }
+      }
+    },
+    "5 GB": {
+      "shouldTranslate": false
+    },
+    "50 GB": {
+      "shouldTranslate": false
+    },
+    "6 months": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 bulan"
+          }
+        }
+      }
+    },
+    "6 months+": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6+ bulan"
+          }
+        }
+      }
+    },
+    "A couple of extras": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beberapa tambahan"
+          }
+        }
+      }
+    },
+    "A virtual device. Remove it if you no longer use this emulator.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perangkat virtual. Hapus jika emulator ini sudah tidak dipakai."
+          }
+        }
+      }
+    },
+    "About": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tentang"
+          }
+        }
+      }
+    },
+    "Access granted": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akses diberikan"
+          }
+        }
+      }
+    },
+    "Active %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktif %@"
+          }
+        }
+      }
+    },
+    "Add Folder": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tambah Folder"
+          }
+        }
+      }
+    },
+    "Add Folder…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tambah Folder…"
+          }
+        }
+      }
+    },
+    "After your first clean, you'll see what went and how much space you got back.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setelah pembersihan pertama, Anda akan melihat apa yang dihapus dan berapa ruang yang kembali."
+          }
+        }
+      }
+    },
+    "All": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua"
+          }
+        }
+      }
+    },
+    "All reviewed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua sudah dicek"
+          }
+        }
+      }
+    },
+    "Allow access in System Settings › Privacy & Security › Photos, or scan folders instead.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izinkan akses di Pengaturan Sistem › Privasi & Keamanan › Foto, atau pindai folder saja."
+          }
+        }
+      }
+    },
+    "Almost full": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hampir penuh"
+          }
+        }
+      }
+    },
+    "Already compact": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sudah ringkas"
+          }
+        }
+      }
+    },
+    "Already in the Trash. These are deleted for good.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sudah ada di Tong Sampah. Ini dihapus permanen."
+          }
+        }
+      }
+    },
+    "Already tidy": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sudah rapi"
+          }
+        }
+      }
+    },
+    "An app archive.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arsip aplikasi."
+          }
+        }
+      }
+    },
+    "Android source code for debugging. Safe to remove.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kode sumber Android untuk debugging. Aman dihapus."
+          }
+        }
+      }
+    },
+    "App Caches": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache Aplikasi"
+          }
+        }
+      }
+    },
+    "App Data": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data Aplikasi"
+          }
+        }
+      }
+    },
+    "App archives. Keep the ones you may need for crash reports.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arsip aplikasi. Simpan yang mungkin perlu untuk laporan crash."
+          }
+        }
+      }
+    },
+    "Application": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi"
+          }
+        }
+      }
+    },
+    "Apps": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi"
+          }
+        }
+      }
+    },
+    "Apps may open a little slower the first time while they rebuild these. Settings, documents and sign-ins stay.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi mungkin sedikit lebih lambat saat pertama dibuka karena membangun ulang cache. Pengaturan, dokumen dan login tetap aman."
+          }
+        }
+      }
+    },
+    "Apps open fresh instead of restoring old windows. Unfinished downloads would need downloading again.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi dibuka bersih tanpa memulihkan jendela lama. Unduhan yang belum selesai perlu diunduh ulang."
+          }
+        }
+      }
+    },
+    "Apps that are open will be quit first.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi yang sedang terbuka akan ditutup dulu."
+          }
+        }
+      }
+    },
+    "Apps using the most memory": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi yang paling banyak memakai memori"
+          }
+        }
+      }
+    },
+    "Archives": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arsip"
+          }
+        }
+      }
+    },
+    "Attachments stay inside your emails. Only copies saved when you opened them are removed.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lampiran tetap ada di email Anda. Hanya salinan yang tersimpan saat dibuka yang dihapus."
+          }
+        }
+      }
+    },
+    "Back": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kembali"
+          }
+        }
+      }
+    },
+    "Background service": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Layanan latar belakang"
+          }
+        }
+      }
+    },
+    "Bahasa Indonesia": {
+      "shouldTranslate": false
+    },
+    "Best": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terbaik"
+          }
+        }
+      }
+    },
+    "Big things that are yours: backups, emulators, AI models. Never ticked for you.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data besar milik Anda: backup, emulator, model AI. Tidak pernah dicentang otomatis."
+          }
+        }
+      }
+    },
+    "Blurry": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buram"
+          }
+        }
+      }
+    },
+    "Browse this folder and pick what to remove": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jelajahi folder ini dan pilih yang mau dihapus"
+          }
+        }
+      }
+    },
+    "Browser Cache": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache Browser"
+          }
+        }
+      }
+    },
+    "Browsers": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Browser"
+          }
+        }
+      }
+    },
+    "Build output. Rebuilt on the next build.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasil build. Dibuat ulang saat build berikutnya."
+          }
+        }
+      }
+    },
+    "Build products. Xcode rebuilds them.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasil build. Xcode membuatnya ulang."
+          }
+        }
+      }
+    },
+    "Byte-for-byte identical files. Novra keeps the oldest copy of each.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File yang identik byte demi byte. Novra menyimpan salinan tertua."
+          }
+        }
+      }
+    },
+    "Cache. Safe to clear.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache. Aman dibersihkan."
+          }
+        }
+      }
+    },
+    "Cached web pages and scripts. Close browsers first for the best result.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halaman web dan skrip yang di-cache. Tutup browser dulu agar hasilnya maksimal."
+          }
+        }
+      }
+    },
+    "Caches": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache"
+          }
+        }
+      }
+    },
+    "Caches, leftovers, old projects, duplicate photos, apps you never open. All in one place, with honest numbers.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache, sisa aplikasi, proyek lama, foto duplikat, aplikasi yang tak pernah dibuka. Semua di satu tempat, dengan angka yang jujur."
+          }
+        }
+      }
+    },
+    "Caches, logs and clutter: %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache, log dan sampah: %@"
+          }
+        }
+      }
+    },
+    "Call things unused after": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anggap tidak dipakai setelah"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batal"
+          }
+        }
+      }
+    },
+    "Cancelled": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibatalkan"
+          }
+        }
+      }
+    },
+    "Check finished": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pemeriksaan selesai"
+          }
+        }
+      }
+    },
+    "Check for Updates": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cek Pembaruan"
+          }
+        }
+      }
+    },
+    "Checked while Novra is running, at most once every few hours.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dicek selama Novra berjalan, paling sering sekali dalam beberapa jam."
+          }
+        }
+      }
+    },
+    "Checking every file in ~/Library/Preferences…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memeriksa setiap file di ~/Library/Preferences…"
+          }
+        }
+      }
+    },
+    "Checks your startup disk for errors. Read-only.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memeriksa error pada disk utama. Hanya membaca."
+          }
+        }
+      }
+    },
+    "Choose Files…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih File…"
+          }
+        }
+      }
+    },
+    "Clean": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan"
+          }
+        }
+      }
+    },
+    "Clean %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan %@"
+          }
+        }
+      }
+    },
+    "Clean External Drive": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan Drive Eksternal"
+          }
+        }
+      }
+    },
+    "Clean selected junk?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan sampah yang dipilih?"
+          }
+        }
+      }
+    },
+    "Clean up": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan"
+          }
+        }
+      }
+    },
+    "Clean up your photos": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rapikan foto Anda"
+          }
+        }
+      }
+    },
+    "Cleaned %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibersihkan %@"
+          }
+        }
+      }
+    },
+    "Cleaning %@…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membersihkan %@…"
+          }
+        }
+      }
+    },
+    "Cleans": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pembersihan"
+          }
+        }
+      }
+    },
+    "Clear Download History": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus Riwayat Unduhan"
+          }
+        }
+      }
+    },
+    "Clears the DNS and ARP caches. macOS will ask for your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengosongkan cache DNS dan ARP. macOS akan meminta kata sandi Anda."
+          }
+        }
+      }
+    },
+    "Clears the record macOS keeps of where every downloaded file came from. Gatekeeper protection is not affected.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus catatan macOS tentang asal setiap file yang diunduh. Perlindungan Gatekeeper tidak terpengaruh."
+          }
+        }
+      }
+    },
+    "Click Open Settings below.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klik Buka Pengaturan di bawah."
+          }
+        }
+      }
+    },
+    "Click to open": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klik untuk membuka"
+          }
+        }
+      }
+    },
+    "Clutter": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sampah"
+          }
+        }
+      }
+    },
+    "CocoaPods dependencies. Run pod install to get them back.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dependensi CocoaPods. Jalankan pod install untuk mengembalikannya."
+          }
+        }
+      }
+    },
+    "Come back here. This page updates by itself.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kembali ke sini. Halaman ini diperbarui otomatis."
+          }
+        }
+      }
+    },
+    "Compact Mail, Safari & Messages": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ringkas Mail, Safari & Pesan"
+          }
+        }
+      }
+    },
+    "Compacting %@…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meringkas %@…"
+          }
+        }
+      }
+    },
+    "Compress": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kompres"
+          }
+        }
+      }
+    },
+    "Containers": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Container"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lanjut"
+          }
+        }
+      }
+    },
+    "Copies of attachments you opened in Mail.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salinan lampiran yang Anda buka di Mail."
+          }
+        }
+      }
+    },
+    "Couldn't change the setting": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagal mengubah pengaturan"
+          }
+        }
+      }
+    },
+    "Couldn't compress": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagal mengompres"
+          }
+        }
+      }
+    },
+    "Couldn't empty the Trash": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagal mengosongkan Tong Sampah"
+          }
+        }
+      }
+    },
+    "Couldn't open the history": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagal membuka riwayat"
+          }
+        }
+      }
+    },
+    "Couldn't remove snapshots": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagal menghapus snapshot"
+          }
+        }
+      }
+    },
+    "DELETE": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HAPUS"
+          }
+        }
+      }
+    },
+    "DNS and ARP caches flushed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache DNS dan ARP dikosongkan"
+          }
+        }
+      }
+    },
+    "Damaged: %@ → Trash": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rusak: %@ → Tong Sampah"
+          }
+        }
+      }
+    },
+    "Dark": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelap"
+          }
+        }
+      }
+    },
+    "Dart/Flutter tool cache. Run flutter pub get.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache tool Dart/Flutter. Jalankan flutter pub get."
+          }
+        }
+      }
+    },
+    "Day": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari"
+          }
+        }
+      }
+    },
+    "Debug symbols per iOS version. Old ones are safe to remove.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simbol debug per versi iOS. Yang lama aman dihapus."
+          }
+        }
+      }
+    },
+    "Delete  ←": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus  ←"
+          }
+        }
+      }
+    },
+    "Delete %lld": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus %lld"
+          }
+        }
+      }
+    },
+    "Delete files for good, skipping the Trash.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus file selamanya, tanpa lewat Tong Sampah."
+          }
+        }
+      }
+    },
+    "Delete permanently": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus permanen"
+          }
+        }
+      }
+    },
+    "Deleted for good. You can't restore these afterwards.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dihapus permanen. Tidak bisa dikembalikan."
+          }
+        }
+      }
+    },
+    "Deleted permanently.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dihapus permanen."
+          }
+        }
+      }
+    },
+    "Deletes local Time Machine snapshots on this Mac. Backups on your backup disk are not touched. macOS will ask for your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus snapshot Time Machine lokal di Mac ini. Backup di disk backup tidak disentuh. macOS akan meminta kata sandi Anda."
+          }
+        }
+      }
+    },
+    "Deletes simulators whose iOS runtime is no longer installed. Their apps and data go with them.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus simulator yang runtime iOS-nya sudah tidak terpasang, beserta aplikasi dan datanya."
+          }
+        }
+      }
+    },
+    "Deleting the simulators listed above…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus simulator di atas…"
+          }
+        }
+      }
+    },
+    "Dependencies and build output in your code projects. All of it comes back with one install or build.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dependensi dan hasil build di proyek kode Anda. Semua kembali dengan satu install atau build."
+          }
+        }
+      }
+    },
+    "Dependencies. Run npm, yarn or pnpm install to get them back.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dependensi. Jalankan npm, yarn atau pnpm install untuk mengembalikannya."
+          }
+        }
+      }
+    },
+    "Developer": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer"
+          }
+        }
+      }
+    },
+    "Developer Junk": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sampah Developer"
+          }
+        }
+      }
+    },
+    "Diagnostic logs nobody reads.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log diagnostik yang tak pernah dibaca."
+          }
+        }
+      }
+    },
+    "Disk": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk"
+          }
+        }
+      }
+    },
+    "Disk Images": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image Disk"
+          }
+        }
+      }
+    },
+    "Disk and memory at a glance, plus Quick Clean. Novra only runs while you keep it open; there's no hidden background service.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk dan memori sekilas, plus Quick Clean. Novra hanya berjalan selama dibuka; tidak ada layanan tersembunyi di latar belakang."
+          }
+        }
+      }
+    },
+    "Disk and memory at a glance, with Quick Clean.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk dan memori sekilas, dengan Quick Clean."
+          }
+        }
+      }
+    },
+    "Disk images and packages in Downloads and Desktop.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk image dan paket di Downloads dan Desktop."
+          }
+        }
+      }
+    },
+    "Docker Cleanup": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan Docker"
+          }
+        }
+      }
+    },
+    "Docker isn't installed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker tidak terpasang"
+          }
+        }
+      }
+    },
+    "Docker's disk with all your images, containers and volumes.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk Docker berisi semua image, container dan volume Anda."
+          }
+        }
+      }
+    },
+    "Documents": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dokumen"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selesai"
+          }
+        }
+      }
+    },
+    "Downloaded dependencies. Gradle downloads them again when needed.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dependensi yang diunduh. Gradle mengunduh ulang saat perlu."
+          }
+        }
+      }
+    },
+    "Downloads twice, copies of copies, photos exported again. Novra compares content, not names.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unduhan ganda, salinan dari salinan, foto yang diekspor ulang. Novra membandingkan isi, bukan nama."
+          }
+        }
+      }
+    },
+    "Drag files or folders here": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seret file atau folder ke sini"
+          }
+        }
+      }
+    },
+    "Drop to add": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lepas untuk menambahkan"
+          }
+        }
+      }
+    },
+    "Duplicates": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplikat"
+          }
+        }
+      }
+    },
+    "Each kind of junk tells you what changes after cleaning it.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setiap jenis sampah memberi tahu apa yang berubah setelah dibersihkan."
+          }
+        }
+      }
+    },
+    "Empty Trash": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kosongkan Tong Sampah"
+          }
+        }
+      }
+    },
+    "Empty folder": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder kosong"
+          }
+        }
+      }
+    },
+    "Empty the Trash when you're sure, to get the space back.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kosongkan Tong Sampah bila sudah yakin, agar ruangnya kembali."
+          }
+        }
+      }
+    },
+    "Emptying the Trash…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengosongkan Tong Sampah…"
+          }
+        }
+      }
+    },
+    "Emulator system images. Remove Android versions you don't test on.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image sistem emulator. Hapus versi Android yang tidak Anda uji."
+          }
+        }
+      }
+    },
+    "English": {
+      "shouldTranslate": false
+    },
+    "Every file Novra finds is listed with its size and what it's for.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Setiap file yang ditemukan Novra ditampilkan dengan ukuran dan fungsinya."
+          }
+        }
+      }
+    },
+    "Every file in these folders is one of a kind.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua file di folder ini unik."
+          }
+        }
+      }
+    },
+    "Every project here was used recently. Try a shorter time range.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua proyek di sini baru saja dipakai. Coba rentang waktu yang lebih pendek."
+          }
+        }
+      }
+    },
+    "Everything Novra removed, kept only on this Mac. Bring back anything still in the Trash.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua yang dihapus Novra, tersimpan hanya di Mac ini. Kembalikan apa pun yang masih di Tong Sampah."
+          }
+        }
+      }
+    },
+    "Everything in the Trash is deleted for good.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua isi Tong Sampah dihapus permanen."
+          }
+        }
+      }
+    },
+    "Everything is analysed on this Mac.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua dianalisis di Mac ini."
+          }
+        }
+      }
+    },
+    "Files left behind by apps that are no longer on this Mac. Review before removing.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File sisa dari aplikasi yang sudah tidak ada di Mac ini. Periksa sebelum menghapus."
+          }
+        }
+      }
+    },
+    "Find Duplicates": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari Duplikat"
+          }
+        }
+      }
+    },
+    "Find Projects": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari Proyek"
+          }
+        }
+      }
+    },
+    "Find settings files that are damaged and can make apps misbehave.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari file pengaturan yang rusak dan bisa membuat aplikasi bermasalah."
+          }
+        }
+      }
+    },
+    "Find what's taking space": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari yang memakan ruang"
+          }
+        }
+      }
+    },
+    "Finder stops writing .DS_Store files to USB and network drives. Folder view settings on those drives won't be remembered. Takes effect after you log out.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder berhenti menulis file .DS_Store ke drive USB dan jaringan. Tampilan folder di drive itu tidak akan diingat. Berlaku setelah logout."
+          }
+        }
+      }
+    },
+    "Finding your apps…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari aplikasi Anda…"
+          }
+        }
+      }
+    },
+    "Finds near-duplicates and keeps the sharpest, plus blurry and dark shots, screenshots and videos you could shrink.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menemukan foto yang hampir sama dan menyimpan yang paling tajam, plus foto buram dan gelap, tangkapan layar dan video yang bisa diperkecil."
+          }
+        }
+      }
+    },
+    "Fix & maintain": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbaiki & rawat"
+          }
+        }
+      }
+    },
+    "Fix “Open With” Menu": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbaiki Menu “Buka Dengan”"
+          }
+        }
+      }
+    },
+    "Fixes blank or stale file previews.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memperbaiki pratinjau file yang kosong atau usang."
+          }
+        }
+      }
+    },
+    "Fixes sites that won't load after a network change.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memperbaiki situs yang tidak bisa dibuka setelah ganti jaringan."
+          }
+        }
+      }
+    },
+    "Fixes “you don't have permission” errors inside your own folders.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memperbaiki error “tidak punya izin” di folder Anda sendiri."
+          }
+        }
+      }
+    },
+    "Flush DNS & ARP": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kosongkan DNS & ARP"
+          }
+        }
+      }
+    },
+    "Folders": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder"
+          }
+        }
+      }
+    },
+    "Folders marked “Shared” may be used by other tools or hold your own work, so Uninstall leaves them unticked.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder bertanda “Dipakai bersama” mungkin dipakai tool lain atau berisi pekerjaan Anda, jadi Uninstall tidak mencentangnya."
+          }
+        }
+      }
+    },
+    "Found ": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ditemukan "
+          }
+        }
+      }
+    },
+    "Found %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ditemukan %@"
+          }
+        }
+      }
+    },
+    "Framework build cache. Rebuilt on the next dev or build run.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache build framework. Dibuat ulang saat dev atau build berikutnya."
+          }
+        }
+      }
+    },
+    "Free Up RAM": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kosongkan RAM"
+          }
+        }
+      }
+    },
+    "Freed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibebaskan"
+          }
+        }
+      }
+    },
+    "Freed %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membebaskan %@"
+          }
+        }
+      }
+    },
+    "Freed all time": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total dibebaskan"
+          }
+        }
+      }
+    },
+    "Freeing…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membebaskan…"
+          }
+        }
+      }
+    },
+    "From apps that are gone": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dari aplikasi yang sudah dihapus"
+          }
+        }
+      }
+    },
+    "Full Disk Access": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akses Disk Penuh"
+          }
+        }
+      }
+    },
+    "Gathering photos": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengumpulkan foto"
+          }
+        }
+      }
+    },
+    "General": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umum"
+          }
+        }
+      }
+    },
+    "Get back the space your Trash is holding.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ambil kembali ruang yang ditahan Tong Sampah."
+          }
+        }
+      }
+    },
+    "GitHub": {
+      "shouldTranslate": false
+    },
+    "Give Novra Full Disk Access": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beri Novra Akses Disk Penuh"
+          }
+        }
+      }
+    },
+    "Goes to the Trash, so you can undo.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Masuk ke Tong Sampah, jadi bisa dibatalkan."
+          }
+        }
+      }
+    },
+    "Gradle daemon logs. Safe to clear.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log daemon Gradle. Aman dibersihkan."
+          }
+        }
+      }
+    },
+    "Gradle project cache. Rebuilt on the next build.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache proyek Gradle. Dibuat ulang saat build berikutnya."
+          }
+        }
+      }
+    },
+    "Gradle versions. Old ones are safe to remove.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versi Gradle. Yang lama aman dihapus."
+          }
+        }
+      }
+    },
+    "Helpers that start with your Mac and keep running in the background.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Helper yang ikut menyala bersama Mac dan terus berjalan di latar belakang."
+          }
+        }
+      }
+    },
+    "Hide": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sembunyikan"
+          }
+        }
+      }
+    },
+    "History": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Riwayat"
+          }
+        }
+      }
+    },
+    "History cleared": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Riwayat dihapus"
+          }
+        }
+      }
+    },
+    "Homebrew Cleanup": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersihkan Homebrew"
+          }
+        }
+      }
+    },
+    "Homebrew isn't installed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew tidak terpasang"
+          }
+        }
+      }
+    },
+    "Honest numbers. Nothing counted twice. Pick what goes.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angka jujur. Tidak ada yang dihitung dua kali. Pilih yang mau dihapus."
+          }
+        }
+      }
+    },
+    "How Novra works": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cara kerja Novra"
+          }
+        }
+      }
+    },
+    "Ignore List": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daftar Abaikan"
+          }
+        }
+      }
+    },
+    "Installed apps keep working. You'd download the installer again to reinstall.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi yang terpasang tetap jalan. Unduh ulang installer jika mau memasang lagi."
+          }
+        }
+      }
+    },
+    "Installers": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installer"
+          }
+        }
+      }
+    },
+    "Is Docker running?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apakah Docker sedang berjalan?"
+          }
+        }
+      }
+    },
+    "Items already in the Trash are deleted for good.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item yang sudah di Tong Sampah dihapus permanen."
+          }
+        }
+      }
+    },
+    "KEEP": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMPAN"
+          }
+        }
+      }
+    },
+    "Keep  →": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simpan  →"
+          }
+        }
+      }
+    },
+    "Language": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahasa"
+          }
+        }
+      }
+    },
+    "Large Files": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File Besar"
+          }
+        }
+      }
+    },
+    "Large Videos": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video Besar"
+          }
+        }
+      }
+    },
+    "Last 30 days": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 hari terakhir"
+          }
+        }
+      }
+    },
+    "Last Opened": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terakhir Dibuka"
+          }
+        }
+      }
+    },
+    "Last active %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terakhir aktif %@"
+          }
+        }
+      }
+    },
+    "Last active: unknown": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terakhir aktif: tidak diketahui"
+          }
+        }
+      }
+    },
+    "Last used %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terakhir dipakai %@"
+          }
+        }
+      }
+    },
+    "Launch Agents": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Launch Agent"
+          }
+        }
+      }
+    },
+    "Leftovers": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sisa"
+          }
+        }
+      }
+    },
+    "Leftovers of Deleted Apps": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sisa Aplikasi Terhapus"
+          }
+        }
+      }
+    },
+    "Lets Novra also look at Safari, Mail and Trash. Novra has no internet access; nothing leaves your Mac.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar Novra juga bisa memeriksa Safari, Mail dan Tong Sampah. Novra tidak memakai internet; tidak ada data yang keluar dari Mac Anda."
+          }
+        }
+      }
+    },
+    "Lets Novra look at Safari, Mail, Messages and the Trash, and at apps' sandboxed caches. Without it, Novra still works but finds less.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar Novra bisa memeriksa Safari, Mail, Pesan, Tong Sampah dan cache aplikasi sandbox. Tanpa ini Novra tetap jalan, tapi menemukan lebih sedikit."
+          }
+        }
+      }
+    },
+    "Live memory use, and the apps holding the most.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pemakaian memori langsung, dan aplikasi yang paling banyak memakainya."
+          }
+        }
+      }
+    },
+    "Local backups macOS keeps on your disk as purgeable space.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup lokal yang disimpan macOS di disk sebagai ruang purgeable."
+          }
+        }
+      }
+    },
+    "Login Items…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item Login…"
+          }
+        }
+      }
+    },
+    "Logs": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log"
+          }
+        }
+      }
+    },
+    "Logs & Crash Reports": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log & Laporan Crash"
+          }
+        }
+      }
+    },
+    "Look inside": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lihat isi"
+          }
+        }
+      }
+    },
+    "Looking at your photos": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memeriksa foto Anda"
+          }
+        }
+      }
+    },
+    "Looking for projects…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari proyek…"
+          }
+        }
+      }
+    },
+    "Looking for safe junk…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mencari sampah yang aman…"
+          }
+        }
+      }
+    },
+    "Macintosh HD": {
+      "shouldTranslate": false
+    },
+    "Made by Naqara Dev": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibuat oleh Naqara Dev"
+          }
+        }
+      }
+    },
+    "Mail": {
+      "shouldTranslate": false
+    },
+    "Mail Attachments": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lampiran Mail"
+          }
+        }
+      }
+    },
+    "Maintenance done": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perawatan selesai"
+          }
+        }
+      }
+    },
+    "Maven dependencies, shared by Java tools.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dependensi Maven, dipakai bersama oleh tool Java."
+          }
+        }
+      }
+    },
+    "Measuring": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengukur"
+          }
+        }
+      }
+    },
+    "Measuring dependencies…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengukur dependensi…"
+          }
+        }
+      }
+    },
+    "Measuring…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengukur…"
+          }
+        }
+      }
+    },
+    "Memory": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memori"
+          }
+        }
+      }
+    },
+    "Menu Bar & Alerts": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu Bar & Peringatan"
+          }
+        }
+      }
+    },
+    "Move to Trash (recoverable)": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pindahkan ke Tong Sampah (bisa dikembalikan)"
+          }
+        }
+      }
+    },
+    "Moved %@ to Trash": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ dipindah ke Tong Sampah"
+          }
+        }
+      }
+    },
+    "Moved %@ to the Trash": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ dipindah ke Tong Sampah"
+          }
+        }
+      }
+    },
+    "Moved %lld photos to Recently Deleted in Photos. They stay there for 30 days.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld foto dipindah ke Baru Dihapus di Foto. Tersimpan di sana selama 30 hari."
+          }
+        }
+      }
+    },
+    "Name": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nama"
+          }
+        }
+      }
+    },
+    "Native Development Kit. Only needed for C/C++ code.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Native Development Kit. Hanya untuk kode C/C++."
+          }
+        }
+      }
+    },
+    "Needed": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibutuhkan"
+          }
+        }
+      }
+    },
+    "Needed by the SDK Manager": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibutuhkan SDK Manager"
+          }
+        }
+      }
+    },
+    "Needed to run emulators": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibutuhkan untuk menjalankan emulator"
+          }
+        }
+      }
+    },
+    "Needed: adb lives here": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dibutuhkan: adb ada di sini"
+          }
+        }
+      }
+    },
+    "Needs Full Disk Access": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butuh Akses Disk Penuh"
+          }
+        }
+      }
+    },
+    "Nix Garbage Collection": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nix Garbage Collection"
+          }
+        }
+      }
+    },
+    "Nix isn't installed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nix tidak terpasang"
+          }
+        }
+      }
+    },
+    "No .DS_Store on Drives": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanpa .DS_Store di Drive"
+          }
+        }
+      }
+    },
+    "No duplicates": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada duplikat"
+          }
+        }
+      }
+    },
+    "No duplicates, blurry or dark shots found.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada duplikat, foto buram atau gelap."
+          }
+        }
+      }
+    },
+    "No emulator uses this": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak dipakai emulator mana pun"
+          }
+        }
+      }
+    },
+    "No files match this filter.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada file yang cocok dengan filter ini."
+          }
+        }
+      }
+    },
+    "No launch agents or daemons were found.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada launch agent atau daemon."
+          }
+        }
+      }
+    },
+    "No local snapshots": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada snapshot lokal"
+          }
+        }
+      }
+    },
+    "Not used for %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak dipakai selama %@"
+          }
+        }
+      }
+    },
+    "Nothing changes for you. Keep them only if you're investigating a crash right now.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang berubah bagi Anda. Simpan hanya jika sedang menyelidiki crash."
+          }
+        }
+      }
+    },
+    "Nothing changes for you; macOS keeps writing fresh logs. Old diagnostics are only useful to Apple support. macOS asks for your password once.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang berubah bagi Anda; macOS terus menulis log baru. Diagnostik lama hanya berguna bagi dukungan Apple. macOS meminta kata sandi sekali."
+          }
+        }
+      }
+    },
+    "Nothing cleaned yet": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belum ada yang dibersihkan"
+          }
+        }
+      }
+    },
+    "Nothing goes without your OK": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang dihapus tanpa izin Anda"
+          }
+        }
+      }
+    },
+    "Nothing here": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kosong"
+          }
+        }
+      }
+    },
+    "Nothing ignored. Use the %@ button on any row to add it here.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belum ada yang diabaikan. Pakai tombol %@ di baris mana pun untuk menambahkannya."
+          }
+        }
+      }
+    },
+    "Nothing inside was opened or changed since %@.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang dibuka atau diubah sejak %@."
+          }
+        }
+      }
+    },
+    "Nothing is deleted until you confirm.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang dihapus sebelum Anda konfirmasi."
+          }
+        }
+      }
+    },
+    "Nothing leaves your Mac": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang keluar dari Mac Anda"
+          }
+        }
+      }
+    },
+    "Nothing selected": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belum ada yang dipilih"
+          }
+        }
+      }
+    },
+    "Nothing starts in the background": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang berjalan di latar belakang"
+          }
+        }
+      }
+    },
+    "Nothing this old": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang selama itu"
+          }
+        }
+      }
+    },
+    "Nothing to clean right now.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang perlu dibersihkan saat ini."
+          }
+        }
+      }
+    },
+    "Nothing to remove": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang perlu dihapus"
+          }
+        }
+      }
+    },
+    "Nothing was deleted.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang dihapus."
+          }
+        }
+      }
+    },
+    "Nothing worth removing turned up. Check back in a few weeks.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada yang perlu dihapus. Cek lagi beberapa minggu lagi."
+          }
+        }
+      }
+    },
+    "Novra": {
+      "shouldTranslate": false
+    },
+    "Novra can't see your photos": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra tidak bisa melihat foto Anda"
+          }
+        }
+      }
+    },
+    "Novra finds it. You decide what goes.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra menemukan. Anda yang memutuskan."
+          }
+        }
+      }
+    },
+    "Novra is open source under the MIT license.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra adalah open source dengan lisensi MIT."
+          }
+        }
+      }
+    },
+    "Novra looks through your home folder for big files: forgotten videos, old disk images, archives you already unpacked.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra mencari file besar di folder home: video yang terlupa, disk image lama, arsip yang sudah diekstrak."
+          }
+        }
+      }
+    },
+    "Novra makes no network requests. No analytics, no tracking, nothing leaves your Mac.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra tidak mengakses internet. Tanpa analitik, tanpa pelacakan, tidak ada yang keluar dari Mac Anda."
+          }
+        }
+      }
+    },
+    "Novra makes no network requests. No analytics, no tracking.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra tidak mengakses internet. Tanpa analitik, tanpa pelacakan."
+          }
+        }
+      }
+    },
+    "Novra never removes anything without asking. These only change what's ticked and offered by default.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra tidak pernah menghapus tanpa bertanya. Ini hanya mengubah apa yang dicentang dan ditawarkan secara bawaan."
+          }
+        }
+      }
+    },
+    "Novra never shows or offers these, in any scan.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra tidak akan menampilkan atau menawarkan ini di pemindaian mana pun."
+          }
+        }
+      }
+    },
+    "Novra on GitHub": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra di GitHub"
+          }
+        }
+      }
+    },
+    "Novra on naqara.dev": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra di naqara.dev"
+          }
+        }
+      }
+    },
+    "Offline website data. Safe to clear.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data situs offline. Aman dibersihkan."
+          }
+        }
+      }
+    },
+    "Old Installers": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installer Lama"
+          }
+        }
+      }
+    },
+    "Old Simulators": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simulator Lama"
+          }
+        }
+      }
+    },
+    "Old build-tools versions are rarely needed.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versi build-tools lama jarang dibutuhkan."
+          }
+        }
+      }
+    },
+    "Old package versions, downloads and dependencies nothing needs anymore.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versi paket lama, unduhan dan dependensi yang sudah tidak dibutuhkan."
+          }
+        }
+      }
+    },
+    "Old projects, heavy folders": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proyek lama, folder berat"
+          }
+        }
+      }
+    },
+    "Old system logs, diagnostics and caches outside your user folder. Asks for your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log sistem lama, diagnostik dan cache di luar folder pengguna. Meminta kata sandi."
+          }
+        }
+      }
+    },
+    "Old window states, broken downloads, firmware files and old crash reports.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status jendela lama, unduhan rusak, file firmware dan laporan crash lama."
+          }
+        }
+      }
+    },
+    "On SSDs, the strongest protection for deleted data is FileVault. Shredding adds an extra overwrite on top.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di SSD, perlindungan terkuat untuk data yang dihapus adalah FileVault. Shredder menambahkan penimpaan ekstra."
+          }
+        }
+      }
+    },
+    "On after next log in": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktif setelah login berikutnya"
+          }
+        }
+      }
+    },
+    "One copy of every file always stays.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satu salinan setiap file selalu disimpan."
+          }
+        }
+      }
+    },
+    "One folder per Android version you compile against.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satu folder per versi Android yang Anda pakai untuk compile."
+          }
+        }
+      }
+    },
+    "One scan shows what is safe to clear. Nothing is removed until you confirm.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satu kali pindai menunjukkan apa yang aman dibersihkan. Tidak ada yang dihapus sebelum Anda konfirmasi."
+          }
+        }
+      }
+    },
+    "Only %@ left. Open Novra to see what's safe to clear.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tinggal %@. Buka Novra untuk melihat apa yang aman dibersihkan."
+          }
+        }
+      }
+    },
+    "Only while Novra is open. You can change this in Settings.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hanya saat Novra terbuka. Bisa diubah di Pengaturan."
+          }
+        }
+      }
+    },
+    "Open": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka"
+          }
+        }
+      }
+    },
+    "Open Novra": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka Novra"
+          }
+        }
+      }
+    },
+    "Open Settings": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka Pengaturan"
+          }
+        }
+      }
+    },
+    "Open With menu rebuilt": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu Buka Dengan dibangun ulang"
+          }
+        }
+      }
+    },
+    "Open source on GitHub": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open source di GitHub"
+          }
+        }
+      }
+    },
+    "Original": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asli"
+          }
+        }
+      }
+    },
+    "Other": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lainnya"
+          }
+        }
+      }
+    },
+    "Other Files": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File Lain"
+          }
+        }
+      }
+    },
+    "Overwrites files, then deletes them without going through the Trash.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menimpa isi file lalu menghapusnya tanpa lewat Tong Sampah."
+          }
+        }
+      }
+    },
+    "Permanently deleted items cannot be restored.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item yang dihapus permanen tidak bisa dikembalikan."
+          }
+        }
+      }
+    },
+    "Permissions repaired": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izin diperbaiki"
+          }
+        }
+      }
+    },
+    "Photos": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto"
+          }
+        }
+      }
+    },
+    "Photos Library": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pustaka Foto"
+          }
+        }
+      }
+    },
+    "Photos go to Recently Deleted in the Photos app for 30 days. macOS will ask you to confirm.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto masuk ke Baru Dihapus di aplikasi Foto selama 30 hari. macOS akan meminta konfirmasi."
+          }
+        }
+      }
+    },
+    "Pick a USB or external drive": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih drive USB atau eksternal"
+          }
+        }
+      }
+    },
+    "Pick an app": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih aplikasi"
+          }
+        }
+      }
+    },
+    "Powered by": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Powered by"
+          }
+        }
+      }
+    },
+    "Powered by naqara.dev · © 2026 Naqara Dev": {
+      "shouldTranslate": false
+    },
+    "Preferences": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preferensi"
+          }
+        }
+      }
+    },
+    "Previews reset": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pratinjau direset"
+          }
+        }
+      }
+    },
+    "Privacy": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privasi"
+          }
+        }
+      }
+    },
+    "Privileged helpers": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Helper berhak akses tinggi"
+          }
+        }
+      }
+    },
+    "Problems found. Run First Aid in Disk Utility.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ditemukan masalah. Jalankan First Aid di Disk Utility."
+          }
+        }
+      }
+    },
+    "Project Build Files": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File Build Proyek"
+          }
+        }
+      }
+    },
+    "Projects": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proyek"
+          }
+        }
+      }
+    },
+    "Python environment. Recreate it and pip install again.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Environment Python. Buat ulang lalu pip install lagi."
+          }
+        }
+      }
+    },
+    "Python tool cache. Rebuilt automatically.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cache tool Python. Dibuat ulang otomatis."
+          }
+        }
+      }
+    },
+    "Quick Clean": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Clean"
+          }
+        }
+      }
+    },
+    "Quit": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keluar"
+          }
+        }
+      }
+    },
+    "Quit Mail, Safari and Messages first": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutup Mail, Safari dan Pesan dulu"
+          }
+        }
+      }
+    },
+    "Quit Mail, Safari and Messages first. Nothing is deleted; the databases are just rewritten compactly.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutup Mail, Safari dan Pesan dulu. Tidak ada yang dihapus; database hanya ditulis ulang agar ringkas."
+          }
+        }
+      }
+    },
+    "Re-encode as HEVC 1080p. The original goes to the Trash or Recently Deleted.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encode ulang ke HEVC 1080p. File asli masuk Tong Sampah atau Baru Dihapus."
+          }
+        }
+      }
+    },
+    "Rebuilding in the background": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membangun ulang di latar belakang"
+          }
+        }
+      }
+    },
+    "Rebuilds search when results are missing or wrong.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membangun ulang pencarian saat hasilnya hilang atau salah."
+          }
+        }
+      }
+    },
+    "Reindex Spotlight": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indeks Ulang Spotlight"
+          }
+        }
+      }
+    },
+    "Remove": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus"
+          }
+        }
+      }
+    },
+    "Remove ._ files, .DS_Store and temp folders macOS leaves on USB drives.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus file ._, .DS_Store dan folder sementara yang ditinggalkan macOS di drive USB."
+          }
+        }
+      }
+    },
+    "Remove build files?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus file build?"
+          }
+        }
+      }
+    },
+    "Remove extra copies?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus salinan berlebih?"
+          }
+        }
+      }
+    },
+    "Remove from History": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus dari Riwayat"
+          }
+        }
+      }
+    },
+    "Remove selected files?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus file yang dipilih?"
+          }
+        }
+      }
+    },
+    "Remove selected items?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus item yang dipilih?"
+          }
+        }
+      }
+    },
+    "Remove selected photos?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus foto yang dipilih?"
+          }
+        }
+      }
+    },
+    "Removed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dihapus"
+          }
+        }
+      }
+    },
+    "Removes duplicate apps from the Open With menu.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus aplikasi ganda dari menu Buka Dengan."
+          }
+        }
+      }
+    },
+    "Removes stopped containers, unused networks, dangling images and build cache. Running containers and volumes are kept.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus container yang berhenti, network tak terpakai, image menggantung dan build cache. Container yang berjalan dan volume tetap aman."
+          }
+        }
+      }
+    },
+    "Removing always asks first, and goes to the Trash by default.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Penghapusan selalu bertanya dulu, dan secara bawaan masuk Tong Sampah."
+          }
+        }
+      }
+    },
+    "Removing build cache…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus build cache…"
+          }
+        }
+      }
+    },
+    "Removing dependencies nothing needs…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus dependensi yang tak dibutuhkan…"
+          }
+        }
+      }
+    },
+    "Removing old versions and downloads…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus versi lama dan unduhan…"
+          }
+        }
+      }
+    },
+    "Removing stopped containers, unused networks and dangling images…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus container berhenti, network tak terpakai dan image menggantung…"
+          }
+        }
+      }
+    },
+    "Repair Home Permissions": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbaiki Izin Folder Home"
+          }
+        }
+      }
+    },
+    "Repair Preferences": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbaiki Preferensi"
+          }
+        }
+      }
+    },
+    "Report an Issue": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laporkan Masalah"
+          }
+        }
+      }
+    },
+    "Reset Quick Look": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset Quick Look"
+          }
+        }
+      }
+    },
+    "Restart Novra to switch language.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai ulang Novra untuk mengganti bahasa."
+          }
+        }
+      }
+    },
+    "Restart Now": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai Ulang"
+          }
+        }
+      }
+    },
+    "Restore %lld": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulihkan %lld"
+          }
+        }
+      }
+    },
+    "Restored": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dipulihkan"
+          }
+        }
+      }
+    },
+    "Restored %lld items to where they were.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld item dikembalikan ke tempat semula."
+          }
+        }
+      }
+    },
+    "Restored %lld items. %lld couldn't go back because something else is in their place.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Restored %1$lld items. %2$lld couldn't go back because something else is in their place."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld item dikembalikan. %2$lld tidak bisa karena sudah ada file lain di tempatnya."
+          }
+        }
+      }
+    },
+    "Review": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tinjau"
+          }
+        }
+      }
+    },
+    "Run": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jalankan"
+          }
+        }
+      }
+    },
+    "Run Maintenance Scripts": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jalankan Skrip Perawatan"
+          }
+        }
+      }
+    },
+    "Run npm install, pod install or a build again the next time you open that project. Source code is never touched, and anything tracked in git is skipped.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jalankan npm install, pod install atau build lagi saat membuka proyek itu. Kode sumber tidak pernah disentuh, dan apa pun yang dilacak git dilewati."
+          }
+        }
+      }
+    },
+    "Running": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berjalan"
+          }
+        }
+      }
+    },
+    "Runs brew cleanup --prune=30 and brew autoremove. Packages you installed keep working; old versions, downloads and orphaned dependencies go.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menjalankan brew cleanup --prune=30 dan brew autoremove. Paket yang Anda pasang tetap jalan; versi lama, unduhan dan dependensi yatim dihapus."
+          }
+        }
+      }
+    },
+    "Runs diskutil resetUserPermissions on your home folder. Takes a few minutes. macOS will ask for your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menjalankan diskutil resetUserPermissions di folder home. Butuh beberapa menit. macOS akan meminta kata sandi Anda."
+          }
+        }
+      }
+    },
+    "Runs for all users": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berjalan untuk semua pengguna"
+          }
+        }
+      }
+    },
+    "Runs for you": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berjalan untuk Anda"
+          }
+        }
+      }
+    },
+    "Runs nix-store --gc. Anything still referenced by a profile stays.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menjalankan nix-store --gc. Apa pun yang masih dipakai profil tetap ada."
+          }
+        }
+      }
+    },
+    "Runs periodic daily weekly monthly. macOS will ask for your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menjalankan periodic daily weekly monthly. macOS akan meminta kata sandi Anda."
+          }
+        }
+      }
+    },
+    "Rust or Java build output. Rebuilt on the next build.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasil build Rust atau Java. Dibuat ulang saat build berikutnya."
+          }
+        }
+      }
+    },
+    "Safe to remove": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aman dihapus"
+          }
+        }
+      }
+    },
+    "Same file, saved twice": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File yang sama, tersimpan dua kali"
+          }
+        }
+      }
+    },
+    "Saved %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hemat %@"
+          }
+        }
+      }
+    },
+    "Saved to History.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tersimpan di Riwayat."
+          }
+        }
+      }
+    },
+    "Scan": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pindai"
+          }
+        }
+      }
+    },
+    "Scan Again": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pindai Lagi"
+          }
+        }
+      }
+    },
+    "Scan My Mac": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pindai Mac Saya"
+          }
+        }
+      }
+    },
+    "Screenshots": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tangkapan Layar"
+          }
+        }
+      }
+    },
+    "Search apps": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari aplikasi"
+          }
+        }
+      }
+    },
+    "See everything it keeps on your Mac, and look inside the big folders.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lihat semua yang disimpannya di Mac Anda, dan lihat isi folder besarnya."
+          }
+        }
+      }
+    },
+    "See your disk as a map. Dive into any folder and pick what goes.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lihat disk sebagai peta. Masuk ke folder mana pun dan pilih yang dihapus."
+          }
+        }
+      }
+    },
+    "Select %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih %@"
+          }
+        }
+      }
+    },
+    "Select all": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih semua"
+          }
+        }
+      }
+    },
+    "Select extras": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih yang berlebih"
+          }
+        }
+      }
+    },
+    "Select them": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih semuanya"
+          }
+        }
+      }
+    },
+    "Select these": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih ini"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pengaturan"
+          }
+        }
+      }
+    },
+    "Settings, caches and data from apps no longer on this Mac.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pengaturan, cache dan data dari aplikasi yang sudah tidak ada di Mac ini."
+          }
+        }
+      }
+    },
+    "Shared": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dipakai bersama"
+          }
+        }
+      }
+    },
+    "Show Novra in the menu bar": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilkan Novra di menu bar"
+          }
+        }
+      }
+    },
+    "Shred": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hancurkan"
+          }
+        }
+      }
+    },
+    "Shred %lld items?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hancurkan %lld item?"
+          }
+        }
+      }
+    },
+    "Shredded files cannot be recovered, not even from the Trash.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File yang dihancurkan tidak bisa dipulihkan, bahkan dari Tong Sampah."
+          }
+        }
+      }
+    },
+    "Shredder": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shredder"
+          }
+        }
+      }
+    },
+    "Shrink the databases behind Mail, Safari history and Messages.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perkecil database Mail, riwayat Safari dan Pesan."
+          }
+        }
+      }
+    },
+    "Similar": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mirip"
+          }
+        }
+      }
+    },
+    "Similar, blurry and dark shots, screenshots and big videos. Novra keeps your best shot and offers the rest.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto mirip, buram dan gelap, tangkapan layar dan video besar. Novra menyimpan foto terbaik dan menawarkan sisanya."
+          }
+        }
+      }
+    },
+    "Simulator devices and the apps installed on them.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perangkat simulator dan aplikasi di dalamnya."
+          }
+        }
+      }
+    },
+    "Simulator runtimes.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runtime simulator."
+          }
+        }
+      }
+    },
+    "Sites load a bit slower on the first visit. You stay signed in: cookies, passwords, history and bookmarks are untouched.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Situs sedikit lebih lambat saat pertama dibuka. Anda tetap login: cookie, kata sandi, riwayat dan bookmark tidak disentuh."
+          }
+        }
+      }
+    },
+    "Size": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukuran"
+          }
+        }
+      }
+    },
+    "Small fixes and power tools. Each one says what it does before it does it.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbaikan kecil dan alat canggih. Masing-masing menjelaskan apa yang dilakukan sebelum berjalan."
+          }
+        }
+      }
+    },
+    "Smart Scan": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart Scan"
+          }
+        }
+      }
+    },
+    "Snapshots thinned": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snapshot dikurangi"
+          }
+        }
+      }
+    },
+    "Space Lens": {
+      "shouldTranslate": false
+    },
+    "Spotlight rebuilds its index in the background. Search may be incomplete for a while. macOS will ask for your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotlight membangun ulang indeks di latar belakang. Pencarian mungkin belum lengkap untuk sementara. macOS akan meminta kata sandi Anda."
+          }
+        }
+      }
+    },
+    "Start Using Novra": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai Pakai Novra"
+          }
+        }
+      }
+    },
+    "Startup Items": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item Startup"
+          }
+        }
+      }
+    },
+    "Stop": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhenti"
+          }
+        }
+      }
+    },
+    "Stop %lld startup items?": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hentikan %lld item startup?"
+          }
+        }
+      }
+    },
+    "Stop the Mac leaving hidden .DS_Store files on USB and network drives.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hentikan Mac meninggalkan file .DS_Store tersembunyi di drive USB dan jaringan."
+          }
+        }
+      }
+    },
+    "Store paths no profile or project uses anymore.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Store path yang sudah tidak dipakai profil atau proyek mana pun."
+          }
+        }
+      }
+    },
+    "Swipe to Clean": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geser untuk Bersihkan"
+          }
+        }
+      }
+    },
+    "System": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem"
+          }
+        }
+      }
+    },
+    "System Clutter": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sampah Sistem"
+          }
+        }
+      }
+    },
+    "System Junk": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File Sistem Usang"
+          }
+        }
+      }
+    },
+    "Temporary files apps rebuild on their own.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File sementara yang dibuat ulang sendiri oleh aplikasi."
+          }
+        }
+      }
+    },
+    "Test coverage report.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laporan test coverage."
+          }
+        }
+      }
+    },
+    "The Android Emulator program.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Program Android Emulator."
+          }
+        }
+      }
+    },
+    "The Android SDK: platforms, build tools, emulator images.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android SDK: platform, build tools, image emulator."
+          }
+        }
+      }
+    },
+    "The biggest files in your home folder, biggest first.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File terbesar di folder home, dari yang paling besar."
+          }
+        }
+      }
+    },
+    "The next build takes longer and package managers download dependencies again. Your projects and code are untouched.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Build berikutnya lebih lama dan package manager mengunduh ulang dependensi. Proyek dan kode Anda tidak disentuh."
+          }
+        }
+      }
+    },
+    "There's nothing inside, or Novra can't read it.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada isinya, atau Novra tidak bisa membacanya."
+          }
+        }
+      }
+    },
+    "These belong to apps that are gone. If you reinstall one later, it starts with fresh settings.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ini milik aplikasi yang sudah dihapus. Jika dipasang lagi, aplikasi mulai dengan pengaturan baru."
+          }
+        }
+      }
+    },
+    "These hold real data: phone backups, emulator disks, downloaded models. Removing one means restoring, recreating or re-downloading it.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ini berisi data nyata: backup ponsel, disk emulator, model yang diunduh. Menghapusnya berarti harus memulihkan, membuat ulang atau mengunduh ulang."
+          }
+        }
+      }
+    },
+    "They stop launching automatically. The apps themselves stay installed. Items for all users need your password.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item ini berhenti menyala otomatis. Aplikasinya tetap terpasang. Item untuk semua pengguna butuh kata sandi."
+          }
+        }
+      }
+    },
+    "They try to start at every login and fail. Safe to remove.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item ini mencoba menyala setiap login lalu gagal. Aman dihapus."
+          }
+        }
+      }
+    },
+    "Thinning %lld snapshots…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengurangi %lld snapshot…"
+          }
+        }
+      }
+    },
+    "This month": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulan ini"
+          }
+        }
+      }
+    },
+    "This takes a few minutes.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Butuh beberapa menit."
+          }
+        }
+      }
+    },
+    "Time Machine Snapshots": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snapshot Time Machine"
+          }
+        }
+      }
+    },
+    "Toolkit": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toolkit"
+          }
+        }
+      }
+    },
+    "Trash": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tong Sampah"
+          }
+        }
+      }
+    },
+    "Trash emptied": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tong Sampah dikosongkan"
+          }
+        }
+      }
+    },
+    "Turn on Novra in the list. Use + to add it if it's missing.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktifkan Novra di daftar. Pakai + untuk menambahkannya jika belum ada."
+          }
+        }
+      }
+    },
+    "Undo  ⌘Z": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Urungkan  ⌘Z"
+          }
+        }
+      }
+    },
+    "Uninstall": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall"
+          }
+        }
+      }
+    },
+    "Unused 1 month+": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak dipakai 1+ bulan"
+          }
+        }
+      }
+    },
+    "Unused 1+ month": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak dipakai 1+ bulan"
+          }
+        }
+      }
+    },
+    "Unused 1+ year": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak dipakai 1+ tahun"
+          }
+        }
+      }
+    },
+    "Unused 3+ months": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak dipakai 3+ bulan"
+          }
+        }
+      }
+    },
+    "Unused 6+ months": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak dipakai 6+ bulan"
+          }
+        }
+      }
+    },
+    "Unused images, stopped containers and build cache.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image tak terpakai, container berhenti dan build cache."
+          }
+        }
+      }
+    },
+    "Updates live. macOS uses spare memory as cache, so “free” is usually small, and that's fine.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diperbarui langsung. macOS memakai memori kosong sebagai cache, jadi “kosong” biasanya kecil, dan itu normal."
+          }
+        }
+      }
+    },
+    "Used by %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dipakai oleh %@"
+          }
+        }
+      }
+    },
+    "Used by %lld emulators": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dipakai %lld emulator"
+          }
+        }
+      }
+    },
+    "Verify Disk": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verifikasi Disk"
+          }
+        }
+      }
+    },
+    "Version %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versi %@"
+          }
+        }
+      }
+    },
+    "Videos": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video"
+          }
+        }
+      }
+    },
+    "Waiting for your password…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menunggu kata sandi Anda…"
+          }
+        }
+      }
+    },
+    "Warn below": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peringatkan di bawah"
+          }
+        }
+      }
+    },
+    "Warn me when the disk is almost full": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peringatkan saat disk hampir penuh"
+          }
+        }
+      }
+    },
+    "Welcome to Novra": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selamat datang di Novra"
+          }
+        }
+      }
+    },
+    "What happens if you clean this": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apa yang terjadi jika dibersihkan"
+          }
+        }
+      }
+    },
+    "When removing": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat menghapus"
+          }
+        }
+      }
+    },
+    "Working…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memproses…"
+          }
+        }
+      }
+    },
+    "Worth a Look": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Layak Dicek"
+          }
+        }
+      }
+    },
+    "Xcode builds, simulator caches and package-manager downloads.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Build Xcode, cache simulator dan unduhan package manager."
+          }
+        }
+      }
+    },
+    "Xcode simulators for runtimes you no longer have.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simulator Xcode untuk runtime yang sudah tidak ada."
+          }
+        }
+      }
+    },
+    "You can close this; the tool keeps running.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jendela ini bisa ditutup; tool tetap berjalan."
+          }
+        }
+      }
+    },
+    "You kept everything.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda menyimpan semuanya."
+          }
+        }
+      }
+    },
+    "You know what happens next": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda tahu apa yang terjadi"
+          }
+        }
+      }
+    },
+    "You see everything first": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda melihat semuanya dulu"
+          }
+        }
+      }
+    },
+    "You'll pick a drive. Novra removes ._ files, .DS_Store and .TemporaryItems on it. The drive's Trash and Spotlight index are left alone.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anda akan memilih drive. Novra menghapus file ._, .DS_Store dan .TemporaryItems di sana. Tong Sampah dan indeks Spotlight drive tidak disentuh."
+          }
+        }
+      }
+    },
+    "Your Mac is almost full": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac Anda hampir penuh"
+          }
+        }
+      }
+    },
+    "Your Mac is spotless": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac Anda sudah bersih"
+          }
+        }
+      }
+    },
+    "Your disk looks healthy": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk Anda sehat"
+          }
+        }
+      }
+    },
+    "Your photos look tidy": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto Anda sudah rapi"
+          }
+        }
+      }
+    },
+    "Your source code stays. Everything here comes back with npm install, pod install or a build. Deleting permanently frees the space right away.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kode sumber tetap aman. Semua ini kembali dengan npm install, pod install atau build. Hapus permanen langsung membebaskan ruang."
+          }
+        }
+      }
+    },
+    "Your virtual devices. Each one can take several GB.": {
+      "extractionState": "stale",
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perangkat virtual Anda. Masing-masing bisa beberapa GB."
+          }
+        }
+      }
+    },
+    "and %lld more": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dan %lld lainnya"
+          }
+        }
+      }
+    },
+    "and %lld more groups. Use Swipe to Clean or Select extras.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dan %lld kelompok lainnya. Pakai Geser untuk Bersihkan atau Pilih yang berlebih."
+          }
+        }
+      }
+    },
+    "brew cleanup failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "brew cleanup gagal"
+          }
+        }
+      }
+    },
+    "diskutil failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "diskutil gagal"
+          }
+        }
+      }
+    },
+    "free of %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kosong dari %@"
+          }
+        }
+      }
+    },
+    "freed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dibebaskan"
+          }
+        }
+      }
+    },
+    "lsregister failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "lsregister gagal"
+          }
+        }
+      }
+    },
+    "macOS keeps a log of every file you've ever downloaded. Wipe it.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS mencatat setiap file yang pernah Anda unduh. Hapus catatannya."
+          }
+        }
+      }
+    },
+    "macOS's own daily, weekly and monthly housekeeping, run now.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perawatan harian, mingguan dan bulanan bawaan macOS, dijalankan sekarang."
+          }
+        }
+      }
+    },
+    "naqara.dev": {
+      "shouldTranslate": false
+    },
+    "nix-store failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nix-store gagal"
+          }
+        }
+      }
+    },
+    "node_modules, .next, build, Pods, .venv… Novra finds them in projects you haven't run in a while. Source code is never touched.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "node_modules, .next, build, Pods, .venv… Novra menemukannya di proyek yang lama tidak dijalankan. Kode sumber tidak pernah disentuh."
+          }
+        }
+      }
+    },
+    "node_modules, build and dist folders in projects you haven't touched lately.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder node_modules, build dan dist di proyek yang lama tidak disentuh."
+          }
+        }
+      }
+    },
+    "qlmanage failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "qlmanage gagal"
+          }
+        }
+      }
+    },
+    "simctl failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "simctl gagal"
+          }
+        }
+      }
+    },
+    "used of %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "terpakai dari %@"
+          }
+        }
+      }
+    },
+    "…": {
+      "shouldTranslate": false
+    }
+  },
+  "version": "1.0"
+}
