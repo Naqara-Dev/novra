@@ -57,12 +57,12 @@
         }
       }
     },
-    "%@ is open. Quit it first.": {
+    "%@ is open. Quit it to clean this.": {
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ sedang terbuka. Tutup dulu."
+            "value": "%@ sedang terbuka. Tutup dulu untuk membersihkan ini."
           }
         }
       }
@@ -2165,6 +2165,7 @@
       }
     },
     "In use by %@. Quit it first, or Novra will skip it.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {

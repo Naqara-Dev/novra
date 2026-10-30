@@ -61,14 +61,16 @@ enum Cleaner {
     }
 
     /// Moves items to the Trash (or deletes them when `toTrash` is false, or when they already live in
-    /// the Trash). Anything a running program has open is skipped and reported, never forced.
+    /// the Trash). Anything that belongs to an open app, or that a running program has open, is skipped
+    /// and reported, never forced.
     /// Only items owned by someone else (root-owned apps, system logs) go through a password prompt.
     static func remove(_ items: [URL: Int64], toTrash: Bool, source: String = "Novra") async -> CleanReport {
         let targets = collapse(items)
         await Activity.shared.begin(toTrash ? "Moving to Trash…" : "Deleting permanently…", total: targets.count)
         let open = await OpenFiles.snapshot()
+        let apps = RunningApps.current()
         var (report, needsAuth) = await Task.detached(priority: .userInitiated) {
-            removeDirectly(targets, toTrash: toTrash, open: open) { name, bytes in
+            removeDirectly(targets, toTrash: toTrash, open: open, apps: apps) { name, bytes in
                 Task { @MainActor in Activity.shared.step(name, bytes: bytes) }
             }
         }.value
@@ -98,7 +100,7 @@ enum Cleaner {
         return report
     }
 
-    private static func removeDirectly(_ targets: [URL: Int64], toTrash: Bool, open: OpenFiles,
+    private static func removeDirectly(_ targets: [URL: Int64], toTrash: Bool, open: OpenFiles, apps: RunningApps,
                                        step: @Sendable (String, Int64) -> Void) -> (CleanReport, [URL: Int64]) {
         var report = CleanReport(movedToTrash: toTrash)
         var needsAuth: [URL: Int64] = [:]
@@ -109,7 +111,8 @@ enum Cleaner {
             defer { step(url.tildePath, report.freed - freedBefore) }
             guard !isProtected(url) else { report.failed.append(url); continue }
             guard fm.fileExists(atPath: url.path) || isSymlink(url) else { continue }
-            if let holder = open.holder(of: url) {
+            // Last check before anything moves: an app that's open (or has files open here) wins.
+            if let holder = open.holder(of: url) ?? apps.owner(of: url) {
                 report.inUse[url] = holder
                 continue
             }

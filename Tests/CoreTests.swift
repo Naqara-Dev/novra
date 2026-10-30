@@ -31,6 +31,7 @@ enum CoreTests {
         await permanentDelete()
         await readOnlyFolders()
         await inUseIsSkipped()
+        runningApps()
         ignoreList()
         projectDetection()
         glob()
@@ -207,10 +208,25 @@ extension CoreTests {
         let report = await Cleaner.remove([folder: 4096], toTrash: false, source: "Novra Tests")
         check(report.inUse[folder] == "tail" && report.removed == 0 && FileManager.default.fileExists(atPath: file.path),
               "skips a folder that's in use")
-        holder.terminate()
-        holder.waitUntilExit()
+        // Poll instead of waitUntilExit(), which needs a run loop this async main doesn't spin.
+        kill(holder.processIdentifier, SIGKILL)
+        for _ in 0..<40 where holder.isRunning { try? await Task.sleep(for: .milliseconds(50)) }
 
         let after = await Cleaner.remove([folder: 4096], toTrash: false, source: "Novra Tests")
         check(after.removed == 1 && after.inUse.isEmpty, "removes it once nothing holds it")
+    }
+}
+
+extension CoreTests {
+    /// Folders that belong to an open app are recognised; ordinary folders are not.
+    static func runningApps() {
+        let apps = RunningApps.current()
+        let h = Cleaner.home.path
+        check(apps.owner(of: URL(filePath: h + "/Library/Caches/com.apple.finder")) == "Finder",
+              "a cache named after an open app's bundle ID belongs to it")
+        check(apps.owner(of: URL(filePath: h + "/Library/Application Support/Finder")) == nil,
+              "Apple apps don't match by name")
+        check(apps.owner(of: URL(filePath: h + "/Music/Finder")) == nil, "names only match inside ~/Library")
+        check(apps.owner(of: URL(filePath: h + "/Library/Caches/com.example.notrunning")) == nil, "unrelated caches are free")
     }
 }

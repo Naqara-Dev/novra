@@ -306,11 +306,16 @@ private struct JunkGroupCard: View {
                         ForEach(group.items) { item in
                             HStack(spacing: 12) {
                                 CheckBox(isOn: model.selected.contains(item.id)) { model.toggle(item) }
+                                    .disabled(item.lockedBy != nil)
+                                    .opacity(item.lockedBy != nil ? 0.3 : 1)
+                                    .help(item.lockedBy.map { String(localized: "\($0) is open. Quit it to clean this.") } ?? "")
                                 if let url = item.urls.first { FileIcon(url: url, size: 22) }
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(item.name).font(.system(size: 13)).lineLimit(1)
                                     if let note = item.note {
-                                        Text(note).font(.system(size: 11)).foregroundStyle(Theme.tertiary).lineLimit(1).truncationMode(.middle)
+                                        Text(note).font(.system(size: 11))
+                                            .foregroundStyle(item.lockedBy != nil ? Theme.orange : Theme.tertiary)
+                                            .lineLimit(1).truncationMode(.middle)
                                     }
                                 }
                                 Spacer()

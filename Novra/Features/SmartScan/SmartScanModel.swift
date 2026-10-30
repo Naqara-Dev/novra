@@ -81,16 +81,19 @@ final class SmartScanModel {
     }
 
     func state(of group: JunkGroup) -> CheckState {
-        let count = group.items.filter { selected.contains($0.id) }.count
-        return count == 0 ? .off : count == group.items.count ? .on : .mixed
+        let open = group.items.filter { $0.lockedBy == nil }
+        let count = open.filter { selected.contains($0.id) }.count
+        return count == 0 ? .off : count == open.count ? .on : .mixed
     }
 
+    /// Ticks or clears a whole group. Locked rows (their app is open) are never ticked.
     func toggle(_ group: JunkGroup) {
-        let ids = group.items.map(\.id)
+        let ids = group.items.filter { $0.lockedBy == nil }.map(\.id)
         if state(of: group) == .on { selected.subtract(ids) } else { selected.formUnion(ids) }
     }
 
     func toggle(_ item: JunkItem) {
+        guard item.lockedBy == nil else { return }
         if selected.contains(item.id) { selected.remove(item.id) } else { selected.insert(item.id) }
     }
 

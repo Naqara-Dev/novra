@@ -431,7 +431,7 @@ ID = {
     "System Junk": "File Sistem Usang",
     "Temporary files apps rebuild on their own.": "File sementara yang dibuat ulang sendiri oleh aplikasi.",
     "Spotlight is still off. Check System Settings › Spotlight › Search Privacy.": "Spotlight masih mati. Cek Pengaturan Sistem › Spotlight › Privasi Pencarian.",
-    "%@ is open. Quit it first.": "%@ sedang terbuka. Tutup dulu.",
+    "%@ is open. Quit it to clean this.": "%@ sedang terbuka. Tutup dulu untuk membersihkan ini.",
     "%lld cache folder(s)": "%lld folder cache",
     "%lld item(s) couldn't be removed. They may be protected.": "%lld item tidak bisa dihapus. Mungkin dilindungi.",
     "In use by %@. Quit it first, or Novra will skip it.": "Sedang dipakai %@. Tutup dulu, atau Novra akan melewatinya.",

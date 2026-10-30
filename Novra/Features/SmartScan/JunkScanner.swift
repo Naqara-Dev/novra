@@ -117,6 +117,8 @@ struct JunkItem: Identifiable, Hashable, Sendable {
     let urls: [URL]
     let size: Int64
     let selectedByDefault: Bool
+    /// Set when an open app is using this. Such rows can't be ticked until it's quit.
+    var lockedBy: String? = nil
 }
 
 struct JunkGroup: Identifiable, Sendable {
@@ -143,7 +145,8 @@ enum JunkScanner {
         Bundle.main.bundleIdentifier ?? "com.naqara.novra.mac",
     ]
 
-    static func scan(_ kind: JunkKind, claimed: Set<String>, open: OpenFiles = .empty, progress: Progress) -> [JunkItem] {
+    static func scan(_ kind: JunkKind, claimed: Set<String>, open: OpenFiles = .empty,
+                     apps: RunningApps = RunningApps.current(), progress: Progress) -> [JunkItem] {
         let items: [JunkItem]
         switch kind {
         case .caches: items = scanCaches(claimed: claimed, progress: progress)
@@ -191,12 +194,12 @@ enum JunkScanner {
                             selectedByDefault: item.selectedByDefault)
         }
         .filter { $0.size > 0 }
-        // Something a running program has open starts unticked, and says what's using it.
+        // Anything an open app is using, or that belongs to an open app, is locked: it can't be
+        // ticked until that app is quit.
         .map { item -> JunkItem in
-            guard let holder = open.holder(ofAny: item.urls) else { return item }
-            let inUse = String(localized: "In use by \(holder). Quit it first, or Novra will skip it.")
-            return JunkItem(name: item.name, note: item.note.map { "\($0) · \(inUse)" } ?? inUse,
-                            urls: item.urls, size: item.size, selectedByDefault: false)
+            guard let holder = apps.owner(ofAny: item.urls) ?? open.holder(ofAny: item.urls) else { return item }
+            return JunkItem(name: item.name, note: String(localized: "\(holder) is open. Quit it to clean this."),
+                            urls: item.urls, size: item.size, selectedByDefault: false, lockedBy: holder)
         }
         .sorted { $0.size > $1.size }
     }
@@ -372,19 +375,16 @@ enum JunkScanner {
             browsers.append((name, bundleID, urls))
         }
 
-        // Clearing a browser's code and GPU caches under it can break new tabs until it restarts,
-        // so an open browser's row starts unticked.
-        let running = Set(NSWorkspace.shared.runningApplications.compactMap(\.bundleIdentifier))
+        // An open browser's row is locked by the running-app check in scan(_:), since clearing its
+        // code and GPU caches under it can break new tabs until it restarts.
         var items: [JunkItem] = []
-        for (index, (name, bundleID, urls)) in browsers.enumerated() {
+        for (index, (name, _, urls)) in browsers.enumerated() {
             let existing = urls.filter { FileManager.default.fileExists(atPath: $0.path) }
             guard !existing.isEmpty else { continue }
             progress(existing[0].path, Double(index) / Double(browsers.count))
             let size = existing.map { FileSizer.size($0) }.sum
-            let isOpen = running.contains(bundleID)
-            let folders = String(localized: "\(existing.count) cache folder(s)")
-            let note = isOpen ? folders + " · " + String(localized: "\(name) is open. Quit it first.") : folders
-            items.append(JunkItem(name: name, note: note, urls: existing, size: size, selectedByDefault: !isOpen))
+            items.append(JunkItem(name: name, note: String(localized: "\(existing.count) cache folder(s)"),
+                                  urls: existing, size: size, selectedByDefault: true))
         }
         return items
     }

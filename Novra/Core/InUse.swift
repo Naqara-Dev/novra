@@ -1,4 +1,4 @@
-import Foundation
+import AppKit
 
 /// Which of this user's files are open right now, and by what. Used to leave alone
 /// anything a running program still holds, such as a build cache gopls is writing to.
@@ -73,5 +73,49 @@ actor OpenFilesCache {
         let files = await OpenFiles.snapshot()
         cached = (files, Date())
         return files
+    }
+}
+
+/// Apps that are open right now, used to lock rows that belong to them.
+struct RunningApps: Sendable {
+    private let bundleIDs: [(String, String)]   // lowercased bundle ID, display name
+    private let names: [(String, String)]       // lowercased name, display name
+
+    static func current() -> RunningApps {
+        let own = Bundle.main.bundleIdentifier
+        let apps = NSWorkspace.shared.runningApplications.filter {
+            $0.activationPolicy != .prohibited && $0.bundleIdentifier != own && $0.bundleIdentifier != nil
+        }
+        var ids: [(String, String)] = []
+        var names: [(String, String)] = []
+        for app in apps {
+            guard let id = app.bundleIdentifier else { continue }
+            let name = app.localizedName ?? id
+            ids.append((id.lowercased(), name))
+            // Apple's app names are ordinary words (Music, Photos, Notes), so they match by bundle ID only.
+            if !id.hasPrefix("com.apple."), name.count >= 3 { names.append((name.lowercased(), name)) }
+        }
+        return RunningApps(bundleIDs: ids, names: names)
+    }
+
+    /// The open app a path belongs to: a folder named after its bundle ID anywhere, or after
+    /// its name inside ~/Library (like Application Support/Slack or Google/Chrome).
+    func owner(of url: URL) -> String? {
+        let path = url.standardizedFileURL.path
+        let parts = path.split(separator: "/").map { $0.lowercased() }
+        for (id, name) in bundleIDs where parts.contains(where: { $0 == id || $0.hasPrefix(id + ".") }) {
+            return name
+        }
+        guard path.hasPrefix(Cleaner.home.path + "/Library/") else { return nil }
+        let pairs = zip(parts, parts.dropFirst()).map { "\($0) \($1)" }
+        for (lower, name) in names where parts.contains(lower) || pairs.contains(lower) {
+            return name
+        }
+        return nil
+    }
+
+    func owner(ofAny urls: [URL]) -> String? {
+        for url in urls { if let name = owner(of: url) { return name } }
+        return nil
     }
 }
