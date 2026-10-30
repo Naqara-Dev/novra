@@ -60,6 +60,15 @@ The app is available in English and Bahasa Indonesia.
 
 **Download:** grab the latest `.dmg` from [Releases](https://github.com/Naqara-Dev/novra/releases), open it, and drag Novra to Applications.
 
+> **First launch:** Novra isn't notarized by Apple yet, so macOS blocks it the first time ("Apple could not verify…").
+> To open it anyway, do one of the following once:
+>
+> - Open **System Settings › Privacy & Security**, scroll down, and click **Open Anyway** next to Novra.
+> - Or run this in Terminal: `xattr -dr com.apple.quarantine /Applications/Novra.app`
+>
+> Because the app isn't signed with a Developer ID, macOS may ask you to grant **Full Disk Access** again after each update.
+> Verify the download with the SHA-256 listed on the release page.
+
 **Build from source:** you need Xcode 16 or newer.
 
 ```sh
