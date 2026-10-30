@@ -5,6 +5,8 @@ struct CleanReport: Sendable {
     var removed = 0
     var failed: [URL] = []
     var movedToTrash = false
+    /// Items left alone because a running program had files open inside them, with that program's name.
+    var inUse: [URL: String] = [:]
     /// What was removed and, for the Trash, where it landed. Used by History to restore.
     var items: [CleanRecord.Item] = []
 }
@@ -59,21 +61,21 @@ enum Cleaner {
     }
 
     /// Moves items to the Trash (or deletes them when `toTrash` is false, or when they already live in
-    /// the Trash). Items that need an admin password are handed to Finder, which asks for it.
+    /// the Trash). Anything a running program has open is skipped and reported, never forced.
+    /// Only items owned by someone else (root-owned apps, system logs) go through a password prompt.
     static func remove(_ items: [URL: Int64], toTrash: Bool, source: String = "Novra") async -> CleanReport {
         let targets = collapse(items)
         await Activity.shared.begin(toTrash ? "Moving to Trash…" : "Deleting permanently…", total: targets.count)
+        let open = await OpenFiles.snapshot()
         var (report, needsAuth) = await Task.detached(priority: .userInitiated) {
-            removeDirectly(targets, toTrash: toTrash) { name, bytes in
+            removeDirectly(targets, toTrash: toTrash, open: open) { name, bytes in
                 Task { @MainActor in Activity.shared.step(name, bytes: bytes) }
             }
         }.value
         if !needsAuth.isEmpty {
-            // Your own files go through Finder (to the Trash); system logs and caches are deleted as admin.
-            let home = Cleaner.home.path + "/"
-            let recoverable = [home, "/Applications/", "/Library/LaunchAgents/", "/Library/LaunchDaemons/", "/Library/PrivilegedHelperTools/"]
-            // Finder only moves to the Trash, so it's used only when that's what was asked for.
-            let viaFinder = toTrash ? needsAuth.keys.filter { url in recoverable.contains { url.path.hasPrefix($0) } } : []
+            // Apps in /Applications installed by an admin can go to the Trash through Finder, which asks
+            // for the password itself. Everything else that needs a password is deleted as admin.
+            let viaFinder = toTrash ? needsAuth.keys.filter { $0.path.hasPrefix("/Applications/") } : []
             let viaAdmin = needsAuth.keys.filter { !viaFinder.contains($0) }
             if !viaFinder.isEmpty { _ = await finderDelete(viaFinder) }
             if !viaAdmin.isEmpty {
@@ -96,7 +98,7 @@ enum Cleaner {
         return report
     }
 
-    private static func removeDirectly(_ targets: [URL: Int64], toTrash: Bool,
+    private static func removeDirectly(_ targets: [URL: Int64], toTrash: Bool, open: OpenFiles,
                                        step: @Sendable (String, Int64) -> Void) -> (CleanReport, [URL: Int64]) {
         var report = CleanReport(movedToTrash: toTrash)
         var needsAuth: [URL: Int64] = [:]
@@ -107,55 +109,107 @@ enum Cleaner {
             defer { step(url.tildePath, report.freed - freedBefore) }
             guard !isProtected(url) else { report.failed.append(url); continue }
             guard fm.fileExists(atPath: url.path) || isSymlink(url) else { continue }
-            do {
-                var landed: NSURL?
-                if toTrash && !url.path.hasPrefix(trashPath) {
-                    try fm.trashItem(at: url, resultingItemURL: &landed)
-                } else {
-                    try fm.removeItem(at: url)
+            if let holder = open.holder(of: url) {
+                report.inUse[url] = holder
+                continue
+            }
+            let toTrashHere = toTrash && !url.path.hasPrefix(trashPath)
+            var landed: NSURL?
+            var result = attempt(url, toTrash: toTrashHere, landed: &landed)
+            // Tools like Go mark their caches read-only. They're still yours, so make them writable and try again.
+            if result == .denied && isOwnedByMe(url) {
+                makeWritable(url, recursive: !toTrashHere)
+                result = attempt(url, toTrash: toTrashHere, landed: &landed)
+                if result == .denied && toTrashHere {
+                    makeWritable(url, recursive: true)
+                    result = attempt(url, toTrash: toTrashHere, landed: &landed)
                 }
+            }
+            switch result {
+            case .done:
                 report.freed += size
                 report.removed += 1
                 report.items.append(CleanRecord.Item(original: url.path, trashed: landed?.path, size: size))
-            } catch let error as CocoaError where error.code == .fileWriteNoPermission {
+            case .denied where !isOwnedByMe(url):
                 needsAuth[url] = size
-            } catch {
-                if (error as NSError).underlyingErrors.contains(where: { ($0 as NSError).code == Int(EACCES) || ($0 as NSError).code == Int(EPERM) }) {
-                    needsAuth[url] = size
-                } else {
-                    report.failed.append(url)
-                }
+            case .denied, .failed:
+                report.failed.append(url)
             }
         }
         return (report, needsAuth)
+    }
+
+    private enum Attempt { case done, denied, failed }
+
+    private static func attempt(_ url: URL, toTrash: Bool, landed: inout NSURL?) -> Attempt {
+        do {
+            if toTrash {
+                try FileManager.default.trashItem(at: url, resultingItemURL: &landed)
+            } else {
+                try FileManager.default.removeItem(at: url)
+            }
+            return .done
+        } catch let error as CocoaError where error.code == .fileWriteNoPermission {
+            return .denied
+        } catch {
+            let nsError = error as NSError
+            let codes = [nsError] + nsError.underlyingErrors.map { $0 as NSError }
+            return codes.contains { $0.code == Int(EACCES) || $0.code == Int(EPERM) } ? .denied : .failed
+        }
+    }
+
+    private static func isOwnedByMe(_ url: URL) -> Bool {
+        var info = stat()
+        guard lstat(url.path, &info) == 0 else { return false }
+        return info.st_uid == getuid()
+    }
+
+    /// Adds owner write permission to a folder (and, if asked, to every folder inside it).
+    private static func makeWritable(_ url: URL, recursive: Bool) {
+        func addWrite(_ path: String) {
+            var info = stat()
+            guard lstat(path, &info) == 0, info.st_uid == getuid(), (info.st_mode & S_IFMT) == S_IFDIR else { return }
+            if info.st_mode & S_IWUSR == 0 { chmod(path, (info.st_mode & 0o7777) | S_IWUSR) }
+        }
+        addWrite(url.deletingLastPathComponent().path)
+        addWrite(url.path)
+        guard recursive, let walker = FileManager.default.enumerator(atPath: url.path) else { return }
+        while let relative = walker.nextObject() as? String {
+            addWrite(url.path + "/" + relative)
+        }
     }
 
     private static func isSymlink(_ url: URL) -> Bool {
         (try? url.resourceValues(forKeys: [.isSymbolicLinkKey]))?.isSymbolicLink == true
     }
 
-    @MainActor
     private static func finderDelete(_ urls: [URL]) async -> Bool {
         let list = urls.map { "POSIX file \"\(escape($0.path))\"" }.joined(separator: ", ")
-        return runAppleScript("tell application \"Finder\" to delete {\(list)}")
+        return await runAppleScript("tell application \"Finder\" to delete {\(list)}")
     }
 
-    /// Permanently empties the user's Trash.
+    /// Permanently empties the user's Trash. Read-only folders (left there by tools like Go) are made
+    /// writable first, so nothing has to go through Finder and its "in use" dialogs.
     static func emptyTrash() async -> Bool {
-        let leftovers = await Task.detached {
+        guard SystemInfo.hasFullDiskAccess else {
+            // Without Full Disk Access Novra can't see inside the Trash; only Finder can empty it.
+            return await runAppleScript("tell application \"Finder\" to empty trash")
+        }
+        return await Task.detached {
             let fm = FileManager.default
-            for url in FileSizer.children(of: trashFolder) { try? fm.removeItem(at: url) }
-            return FileSizer.children(of: trashFolder).filter { $0.lastPathComponent != ".DS_Store" }.count
+            for url in FileSizer.children(of: trashFolder) {
+                if (try? fm.removeItem(at: url)) == nil, isOwnedByMe(url) {
+                    makeWritable(url, recursive: true)
+                    try? fm.removeItem(at: url)
+                }
+            }
+            return FileSizer.children(of: trashFolder).allSatisfy { $0.lastPathComponent == ".DS_Store" }
         }.value
-        if leftovers == 0 && SystemInfo.hasFullDiskAccess { return true }
-        return await MainActor.run { runAppleScript("tell application \"Finder\" to empty trash") }
     }
 
-    @MainActor
-    private static func runAppleScript(_ source: String) -> Bool {
-        var error: NSDictionary?
-        NSAppleScript(source: source)?.executeAndReturnError(&error)
-        return error == nil
+    /// Runs in its own process, so a Finder dialog never freezes Novra's window.
+    private static func runAppleScript(_ source: String) async -> Bool {
+        await Shell.run("/usr/bin/osascript", ["-e", source]).status == 0
     }
 
     private static func escape(_ s: String) -> String {

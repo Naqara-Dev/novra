@@ -29,6 +29,8 @@ enum CoreTests {
         collapse()
         await trashAndRestore()
         await permanentDelete()
+        await readOnlyFolders()
+        await inUseIsSkipped()
         ignoreList()
         projectDetection()
         glob()
@@ -165,5 +167,50 @@ extension CoreTests {
         check(!Updates.isNewer("1.1.0", than: "1.1"), "1.1.0 equals 1.1")
         check(!Updates.isNewer("1.0", than: "1.1"), "older is not newer")
         check(Updates.isNewer("2.0", than: "1.99.9"), "major beats minor")
+    }
+}
+
+extension CoreTests {
+    /// Go marks its module cache read-only. Novra should still remove it, without asking Finder.
+    static func readOnlyFolders() async {
+        for toTrash in [false, true] {
+            let file = write("gomod-\(toTrash)/example.com/pkg@v1.0.0/pkg.go")
+            let folder = root.appending(path: "gomod-\(toTrash)")
+            for dir in [file.deletingLastPathComponent(), file.deletingLastPathComponent().deletingLastPathComponent(), folder] {
+                chmod(dir.path, 0o555)
+            }
+            let report = await Cleaner.remove([folder: 4096], toTrash: toTrash, source: "Novra Tests")
+            check(report.removed == 1 && report.failed.isEmpty && !FileManager.default.fileExists(atPath: folder.path),
+                  "removes a read-only folder \(toTrash ? "to the Trash" : "permanently")")
+            if let landed = report.items.first?.trashed {
+                _ = await Shell.run("/bin/chmod", ["-R", "u+w", landed])
+                try? FileManager.default.removeItem(atPath: landed)
+            }
+        }
+    }
+
+    /// A folder another program has open is left alone and reported, not forced.
+    static func inUseIsSkipped() async {
+        let file = write("busy/cache.bin")
+        let folder = file.deletingLastPathComponent()
+        let holder = Process()
+        holder.executableURL = URL(filePath: "/usr/bin/tail")
+        holder.arguments = ["-f", file.path]
+        holder.standardOutput = FileHandle.nullDevice
+        try? holder.run()
+        try? await Task.sleep(for: .milliseconds(300))
+
+        let open = await OpenFiles.snapshot()
+        check(open.holder(of: folder) == "tail", "sees which program has a folder open")
+        check(open.holder(of: root.appending(path: "bus")) == nil, "a name prefix isn't a parent folder")
+
+        let report = await Cleaner.remove([folder: 4096], toTrash: false, source: "Novra Tests")
+        check(report.inUse[folder] == "tail" && report.removed == 0 && FileManager.default.fileExists(atPath: file.path),
+              "skips a folder that's in use")
+        holder.terminate()
+        holder.waitUntilExit()
+
+        let after = await Cleaner.remove([folder: 4096], toTrash: false, source: "Novra Tests")
+        check(after.removed == 1 && after.inUse.isEmpty, "removes it once nothing holds it")
     }
 }

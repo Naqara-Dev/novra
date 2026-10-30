@@ -287,8 +287,17 @@ final class ToolkitModel {
             return r.ok ? (.done(String(localized: "DNS and ARP caches flushed")), 0) : (.failed(String(localized: "Cancelled")), 0)
 
         case .spotlight:
-            let r = await admin("mdutil -E /")
-            return r.ok ? (.done(String(localized: "Rebuilding in the background")), 0) : (.failed(String(localized: "Cancelled")), 0)
+            // Your files live on the Data volume; "/" is the sealed system volume. Rebuilding does nothing
+            // while indexing is off, so switch it back on first, then check what Spotlight actually reports.
+            let data = "/System/Volumes/Data"
+            let r = await admin("/usr/bin/mdutil -i on \(data); /usr/bin/mdutil -E \(data)")
+            guard r.ok else { return (.failed(String(localized: "Cancelled")), 0) }
+            let status = await Shell.run("/usr/bin/mdutil", ["-s", data])
+            status.output.split(separator: "\n").map(String.init).filter { !$0.isEmpty }.forEach(log)
+            if status.output.contains("disabled") || status.output.contains("read-only") {
+                return (.failed(String(localized: "Spotlight is still off. Check System Settings › Spotlight › Search Privacy.")), 0)
+            }
+            return (.done(String(localized: "Rebuilding in the background")), 0)
 
         case .launchServices:
             let r = await stream(Self.lsregister, ["-r", "-domain", "local", "-domain", "system", "-domain", "user"])

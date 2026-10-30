@@ -143,7 +143,7 @@ enum JunkScanner {
         Bundle.main.bundleIdentifier ?? "com.naqara.novra.mac",
     ]
 
-    static func scan(_ kind: JunkKind, claimed: Set<String>, progress: Progress) -> [JunkItem] {
+    static func scan(_ kind: JunkKind, claimed: Set<String>, open: OpenFiles = .empty, progress: Progress) -> [JunkItem] {
         let items: [JunkItem]
         switch kind {
         case .caches: items = scanCaches(claimed: claimed, progress: progress)
@@ -190,7 +190,15 @@ enum JunkScanner {
             return JunkItem(name: item.name, note: item.note, urls: kept, size: share * Int64(kept.count),
                             selectedByDefault: item.selectedByDefault)
         }
-        .filter { $0.size > 0 }.sorted { $0.size > $1.size }
+        .filter { $0.size > 0 }
+        // Something a running program has open starts unticked, and says what's using it.
+        .map { item -> JunkItem in
+            guard let holder = open.holder(ofAny: item.urls) else { return item }
+            let inUse = String(localized: "In use by \(holder). Quit it first, or Novra will skip it.")
+            return JunkItem(name: item.name, note: item.note.map { "\($0) · \(inUse)" } ?? inUse,
+                            urls: item.urls, size: item.size, selectedByDefault: false)
+        }
+        .sorted { $0.size > $1.size }
     }
 
     // MARK: Categories

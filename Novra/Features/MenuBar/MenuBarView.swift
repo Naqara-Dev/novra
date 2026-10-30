@@ -12,11 +12,12 @@ final class QuickClean {
     func scan() {
         phase = .scanning
         Task {
+            let open = await OpenFilesCache.shared.current()
             items = await Task.detached(priority: .userInitiated) {
                 var claimed = Set<String>()
                 var found: [JunkItem] = []
                 for kind in [JunkKind.browsers, .caches, .logs, .clutter] {
-                    let items = JunkScanner.scan(kind, claimed: claimed) { _, _ in }.filter(\.selectedByDefault)
+                    let items = JunkScanner.scan(kind, claimed: claimed, open: open) { _, _ in }.filter(\.selectedByDefault)
                     for item in items { claimed.formUnion(item.urls.map { $0.standardizedFileURL.path }) }
                     found += items
                 }

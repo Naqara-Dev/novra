@@ -565,10 +565,15 @@ struct CleanResultBanner: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(report.movedToTrash ? "Moved \(report.freed.byteString) to the Trash" : "Freed \(report.freed.byteString)")
                     .font(.system(size: 13.5, weight: .semibold))
+                if !report.inUse.isEmpty {
+                    let apps = Set(report.inUse.values).sorted().prefix(3).joined(separator: ", ")
+                    Text("Skipped \(report.inUse.count) item(s) still in use by \(apps). Quit it and clean again.")
+                        .font(.system(size: 11.5)).foregroundStyle(Theme.orange)
+                }
                 if !report.failed.isEmpty {
-                    Text("\(report.failed.count) item(s) couldn't be removed. They may be in use or protected.")
+                    Text("\(report.failed.count) item(s) couldn't be removed. They may be protected.")
                         .font(.system(size: 11.5)).foregroundStyle(Theme.secondary)
-                } else if report.movedToTrash {
+                } else if report.movedToTrash && report.inUse.isEmpty {
                     Text("Empty the Trash when you're sure, to get the space back.")
                         .font(.system(size: 11.5)).foregroundStyle(Theme.secondary)
                 }

@@ -54,6 +54,14 @@ enum CleanupRules {
     private static func userClone(_ name: String) -> String { Glob.userCloneDir.map { $0.path + "/" + name } ?? "" }
 
     static let developer: [CleanupRule] = [
+        // Go keeps these warm for every build and editor session; clearing them is safe but slows the
+        // next build, and the module cache is read-only on purpose. Off by default.
+        CleanupRule("Go Build Cache", "~/Library/Caches/go-build", preselect: false,
+                    note: "Go rebuilds it. Your next builds will be slower."),
+        CleanupRule("Go Module Cache", "~/go/pkg/mod", preselect: false,
+                    note: "Downloaded modules. Go fetches them again when a project needs them."),
+        CleanupRule("Go Tool Caches", "~/Library/Caches/golangci-lint", "~/Library/Caches/gopls", "~/Library/Caches/staticcheck",
+                    preselect: false, note: "Linter and editor caches. Rebuilt on the next run."),
         CleanupRule("conda Packages", "~/.conda/pkgs", "~/miniconda3/pkgs", "~/anaconda3/pkgs", "~/opt/miniconda3/pkgs",
                     preselect: false, note: "Package downloads. Existing environments keep working."),
         CleanupRule("Poetry Cache", "~/Library/Caches/pypoetry/cache", "~/Library/Caches/pypoetry/artifacts"),

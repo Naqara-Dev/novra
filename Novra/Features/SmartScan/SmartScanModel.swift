@@ -34,6 +34,7 @@ final class SmartScanModel {
         withAnimation(.spring(response: 0.5, dampingFraction: 0.85)) { phase = .scanning }
         task = Task {
             var claimed = Set<String>()
+            let open = await OpenFilesCache.shared.current()
             // Specific categories first, so the generic cache sweep skips what they already counted.
             let order: [JunkKind] = [.browsers, .developer, .projects, .caches, .clutter, .logs, .system, .leftovers, .installers, .mail, .review, .trash]
             for (index, kind) in order.enumerated() {
@@ -44,7 +45,7 @@ final class SmartScanModel {
                 let snapshot = claimed
                 let generation = self.generation
                 let items = await runDetached { [self] in
-                    JunkScanner.scan(kind, claimed: snapshot) { path, fraction in
+                    JunkScanner.scan(kind, claimed: snapshot, open: open) { path, fraction in
                         Task { @MainActor in
                             guard self.phase == .scanning, self.generation == generation else { return }
                             self.currentPath = path
