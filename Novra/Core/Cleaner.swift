@@ -11,6 +11,32 @@ struct CleanReport: Sendable {
     var items: [CleanRecord.Item] = []
 }
 
+/// A launchd job described by a plist in a LaunchAgents or LaunchDaemons folder.
+struct LaunchJob: Sendable {
+    let label: String
+    let isDaemon: Bool
+
+    init?(plist: URL) {
+        let folder = plist.deletingLastPathComponent().lastPathComponent
+        guard plist.pathExtension == "plist", folder == "LaunchAgents" || folder == "LaunchDaemons" else { return nil }
+        let dict = NSDictionary(contentsOf: plist) as? [String: Any]
+        label = dict?["Label"] as? String ?? plist.deletingPathExtension().lastPathComponent
+        isDaemon = folder == "LaunchDaemons"
+    }
+
+    /// Unloads an agent from this user's session. Agents from /Library/LaunchAgents run here too,
+    /// so no password is needed for them.
+    func stopForUser() {
+        let process = Process()
+        process.executableURL = URL(filePath: "/bin/launchctl")
+        process.arguments = ["bootout", "gui/\(getuid())/\(label)"]
+        process.standardOutput = FileHandle.nullDevice
+        process.standardError = FileHandle.nullDevice
+        try? process.run()
+        process.waitUntilExit()
+    }
+}
+
 /// The only place in Novra that deletes anything.
 enum Cleaner {
     static let home = FileManager.default.homeDirectoryForCurrentUser
@@ -81,8 +107,12 @@ enum Cleaner {
             let viaAdmin = needsAuth.keys.filter { !viaFinder.contains($0) }
             if !viaFinder.isEmpty { _ = await finderDelete(viaFinder) }
             if !viaAdmin.isEmpty {
-                let list = viaAdmin.map { "'" + $0.path.replacingOccurrences(of: "'", with: "'\\''") + "'" }.joined(separator: " ")
-                _ = await Shell.runAsAdmin("/bin/rm -rf \(list)")
+                let quote = { (s: String) in "'" + s.replacingOccurrences(of: "'", with: "'\\''") + "'" }
+                let list = viaAdmin.map { quote($0.path) }.joined(separator: " ")
+                // Launch daemons run as root until launchd lets go of them, file or no file.
+                let stops = viaAdmin.compactMap { LaunchJob(plist: $0) }.filter(\.isDaemon)
+                    .map { "/bin/launchctl bootout \(quote("system/" + $0.label)) 2>/dev/null; " }.joined()
+                _ = await Shell.runAsAdmin("\(stops)/bin/rm -rf \(list)")
             }
             // Judge each item by whether it's actually gone.
             for (url, size) in needsAuth {
@@ -117,6 +147,8 @@ enum Cleaner {
                 continue
             }
             let toTrashHere = toTrash && !url.path.hasPrefix(trashPath)
+            // A launch agent keeps running from launchd's memory once its file is gone, so stop it first.
+            if let job = LaunchJob(plist: url), !job.isDaemon { job.stopForUser() }
             var landed: NSURL?
             var result = attempt(url, toTrash: toTrashHere, landed: &landed)
             // Tools like Go mark their caches read-only. They're still yours, so make them writable and try again.

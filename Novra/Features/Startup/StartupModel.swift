@@ -108,20 +108,11 @@ final class StartupModel {
         selection = Set(items.filter(\.isBroken).map(\.id))
     }
 
-    /// Stops the selected items and moves their launch files to the Trash.
-    /// Items outside your user folder go through Finder, which asks for your password once.
+    /// Stops the selected items and moves their launch files to the Trash (Cleaner unloads each job
+    /// first). Items outside your user folder need your password once.
     func removeSelection() {
         let chosen = selectedItems
         Task {
-            for item in chosen where item.scope == .user {
-                await Task.detached {
-                    let process = Process()
-                    process.executableURL = URL(filePath: "/bin/launchctl")
-                    process.arguments = ["bootout", "gui/\(getuid())", item.plist.path]
-                    try? process.run()
-                    process.waitUntilExit()
-                }.value
-            }
             let targets = Dictionary(uniqueKeysWithValues: chosen.map { ($0.plist, Int64(0)) })
             var result = await Cleaner.remove(targets, toTrash: true, source: "Startup Items")
             result.freed = 0

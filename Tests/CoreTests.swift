@@ -31,6 +31,7 @@ enum CoreTests {
         await permanentDelete()
         await readOnlyFolders()
         await inUseIsSkipped()
+        await launchAgentIsStopped()
         runningApps()
         ignoreList()
         projectDetection()
@@ -92,6 +93,27 @@ enum CoreTests {
         let refused = await Cleaner.remove([URL(filePath: Cleaner.home.path + "/Documents"): 1], toTrash: true, source: "Novra Tests")
         check(refused.removed == 0 && refused.failed.count == 1, "refuses to remove a protected folder")
         check(FileManager.default.fileExists(atPath: Cleaner.home.path + "/Documents"), "Documents still there")
+    }
+
+    /// Deleting an agent's plist must also unload it; launchd otherwise keeps running it from memory.
+    @MainActor
+    static func launchAgentIsStopped() async {
+        let label = "com.naqara.novra.tests.agent"
+        let plist = root.appending(path: "LaunchAgents/\(label).plist")
+        try? FileManager.default.createDirectory(at: plist.deletingLastPathComponent(), withIntermediateDirectories: true)
+        let job: NSDictionary = ["Label": label, "ProgramArguments": ["/bin/sleep", "600"], "RunAtLoad": true]
+        job.write(to: plist, atomically: true)
+        let loaded = { () async -> Bool in await Shell.run("/bin/launchctl", ["print", "gui/\(getuid())/\(label)"]).ok }
+        _ = await Shell.run("/bin/launchctl", ["bootstrap", "gui/\(getuid())", plist.path])
+        check(await loaded(), "test agent is running before removal")
+        check(LaunchJob(plist: plist)?.label == label && LaunchJob(plist: plist)?.isDaemon == false, "reads the agent's label")
+        check(LaunchJob(plist: root.appending(path: "Prefs/x.plist")) == nil, "ignores plists outside launch folders")
+
+        let report = await Cleaner.remove([plist: 4096], toTrash: false, source: "Novra Tests")
+        check(report.removed == 1, "agent plist removed")
+        check(!(await loaded()), "agent unloaded with its plist")
+        if let record = History.shared.records.first(where: { $0.source == "Novra Tests" }) { History.shared.forget(record.id) }
+        _ = await Shell.run("/bin/launchctl", ["bootout", "gui/\(getuid())/\(label)"])
     }
 
     static func ignoreList() {
