@@ -134,7 +134,9 @@ enum ProjectScanner {
             guard let values = try? child.resourceValues(forKeys: [.isDirectoryKey, .isSymbolicLinkKey, .isPackageKey]),
                   values.isDirectory == true, values.isSymbolicLink != true, values.isPackage != true else { continue }
             if isProject && artifactNames.contains(name) {
-                if !FileManager.default.fileExists(atPath: child.appending(path: ".git").path) { artifacts.append(child) }
+                if !FileManager.default.fileExists(atPath: child.appending(path: ".git").path), !hasTrackedFiles(child) {
+                    artifacts.append(child)
+                }
                 continue
             }
             if name.hasPrefix(".") || name == "node_modules" { continue }
@@ -167,5 +169,20 @@ enum ProjectScanner {
         guard (try? process.run()) != nil else { return false }
         process.waitUntilExit()
         return process.terminationStatus == 0
+    }
+
+    /// A rebuildable folder can still contain committed files. Never offer it if Git tracks anything inside.
+    private static func hasTrackedFiles(_ folder: URL) -> Bool {
+        guard let git else { return false }
+        let process = Process()
+        process.executableURL = URL(filePath: git)
+        process.arguments = ["-C", folder.deletingLastPathComponent().path, "ls-files", "--cached", "--", folder.lastPathComponent]
+        let output = Pipe()
+        process.standardOutput = output
+        process.standardError = FileHandle.nullDevice
+        guard (try? process.run()) != nil else { return false }
+        let data = output.fileHandleForReading.readDataToEndOfFile()
+        process.waitUntilExit()
+        return process.terminationStatus == 0 && !data.isEmpty
     }
 }

@@ -73,12 +73,13 @@ struct PhotosView: View {
             }
         }
         .animation(.spring(response: 0.4, dampingFraction: 0.85), value: model.swipe != nil)
+        .onChange(of: model.source) { _, _ in model.sourceDidChange() }
         .sheet(isPresented: $confirming) {
             ConfirmRemovalSheet(title: "Remove selected photos?", count: model.selection.count, size: model.selectionSize,
                                 note: model.source == .library
                                     ? LocalizedStringKey("Photos go to Recently Deleted in the Photos app for 30 days. macOS will ask you to confirm.")
                                     : nil,
-                                allowTrashChoice: model.source == .folders) { _ in model.remove() }
+                                allowTrashChoice: model.source == .folders) { toTrash in model.remove(toTrash: toTrash) }
         }
     }
 
@@ -204,7 +205,12 @@ struct PhotosView: View {
             } else if let result = compressor.results[video.id] {
                 Text(result).font(.system(size: 11.5, weight: .semibold)).foregroundStyle(Theme.green)
             } else {
-                Button("Compress") { compressor.compress(video) { model.replace(video, withSize: $0) } }
+                Button("Compress") {
+                    compressor.compress(video) { newSize in
+                        if newSize < video.size { model.scan() }
+                        else { model.replace(video, withSize: newSize) }
+                    }
+                }
                     .buttonStyle(PillButtonStyle(prominent: false))
                     .help("Re-encode as HEVC 1080p. The original goes to the Trash or Recently Deleted.")
             }

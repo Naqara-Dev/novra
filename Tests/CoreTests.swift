@@ -34,6 +34,7 @@ enum CoreTests {
         await launchAgentIsStopped()
         runningApps()
         ignoreList()
+        historyWritesStayOrdered()
         projectDetection()
         glob()
         shredder()
@@ -55,6 +56,12 @@ enum CoreTests {
                      "/private/var/log/system.log", "/Library/Caches/com.example.cache"] {
             check(!Cleaner.isProtected(URL(filePath: path)), "allows \(path)")
         }
+
+        try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        let link = root.appending(path: "protected-parent")
+        try? FileManager.default.createSymbolicLink(atPath: link.path, withDestinationPath: "/System/Library")
+        check(Cleaner.isProtected(link.appending(path: "Fonts")), "protects a protected target reached through a symlink parent")
+        try? FileManager.default.removeItem(at: link)
     }
 
     static func collapse() {
@@ -123,6 +130,22 @@ enum CoreTests {
         check(!Prefs.isIgnored(URL(filePath: "/Users/x/projects/keeper"), in: set), "doesn't ignore a similar name")
     }
 
+    @MainActor
+    static func historyWritesStayOrdered() {
+        guard let path = ProcessInfo.processInfo.environment["NOVRA_HISTORY_PATH"] else {
+            check(false, "test history path is configured")
+            return
+        }
+        let history = History.shared
+        history.clear()
+        history.add(source: "Old snapshot", report: CleanReport(freed: 1, removed: 1))
+        history.clear()
+        history.add(source: "Latest snapshot", report: CleanReport(freed: 2, removed: 1))
+        history.waitForPendingSaves()
+        let records = (try? Data(contentsOf: URL(filePath: path))).flatMap { try? JSONDecoder().decode([CleanRecord].self, from: $0) } ?? []
+        check(records.count == 1 && records.first?.source == "Latest snapshot", "history writes finish in update order")
+    }
+
     static func projectDetection() {
         _ = write("code/web/package.json")
         _ = write("code/web/src/index.js")
@@ -130,6 +153,7 @@ enum CoreTests {
         _ = write("code/notes/build/plan.txt", bytes: 2_000_000)   // "build" but not a project
         _ = write("code/site/package.json")
         _ = write("code/site/dist/app.js", bytes: 2_000_000)        // tracked in git, must stay
+        _ = write("code/site/node_modules/lib/committed.js", bytes: 2_000_000) // tracked dependencies must stay too
         _ = write("code/app/package.json")
         _ = write("code/app/.gitignore")
         try? "dist/\n".write(to: root.appending(path: "code/app/.gitignore"), atomically: true, encoding: .utf8)
@@ -137,7 +161,7 @@ enum CoreTests {
         _ = write("code/thesis/Makefile")
         _ = write("code/thesis/dist/final.pdf", bytes: 2_000_000)   // no repo: leave it alone
         let site = root.appending(path: "code/site")
-        for (dir, args) in [(site, ["init", "-q"]), (site, ["add", "dist/app.js", "package.json"]),
+        for (dir, args) in [(site, ["init", "-q"]), (site, ["add", "dist/app.js", "node_modules/lib/committed.js", "package.json"]),
                             (root.appending(path: "code/app"), ["init", "-q"])] {
             let p = Process()
             p.executableURL = URL(filePath: "/usr/bin/git")
@@ -150,6 +174,7 @@ enum CoreTests {
         check(names.contains("code/web/node_modules"), "finds node_modules in a project")
         check(!names.contains { $0.contains("notes/build") }, "ignores build/ outside projects")
         check(!names.contains { $0.contains("site/dist") }, "skips build output tracked in git")
+        check(!names.contains { $0.contains("site/node_modules") }, "skips dependency folders tracked in git")
         check(!names.contains { $0.contains("src") }, "never offers source code")
         check(names.contains("code/app/dist"), "finds dist/ that git ignores")
         check(!names.contains { $0.contains("thesis/dist") }, "leaves dist/ alone outside a git repo")
@@ -170,6 +195,13 @@ enum CoreTests {
         check(report.removed == 1 && !FileManager.default.fileExists(atPath: file.path), "shreds a file")
         let refused = Shredder.shred([URL(filePath: "/System/Library")]) { _, _ in }
         check(refused.removed == 0, "won't shred a protected path")
+
+        let target = write("shred-target/keep.txt", bytes: 8192)
+        let link = root.appending(path: "shred-link")
+        try? FileManager.default.createSymbolicLink(at: link, withDestinationURL: target)
+        _ = Shredder.shred([link]) { _, _ in }
+        let contents = try? Data(contentsOf: target)
+        check(contents == Data(repeating: 7, count: 8192), "never overwrites a symlink target")
     }
 }
 

@@ -114,7 +114,7 @@ struct AppCatalog: Sendable {
 
     /// Places an app keeps data that no naming rule would find.
     private static let knownExtras: [String: [(path: String, cautious: Bool)]] = [
-        "com.google.android.studio": [(".android", false), ("Library/Android", false), (".gradle", true),
+        "com.google.android.studio": [(".android", true), ("Library/Android", true), (".gradle", true),
                                       (".m2", true), (".emulator_console_auth_token", false), (".skiko", false)],
         "com.apple.dt.Xcode": [("Library/Developer", true)],
         "com.microsoft.VSCode": [(".vscode", false), ("Library/Application Support/Code", false)],

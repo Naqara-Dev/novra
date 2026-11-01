@@ -46,7 +46,8 @@ struct ToolRunView: View {
             }
 
             HStack {
-                Text(run.status == .running ? "You can close this; the tool keeps running." : "Saved to History.")
+                Text(run.status == .running ? "You can close this; the tool keeps running."
+                     : run.freed > 0 ? "Saved to History." : "Finished.")
                     .font(.system(size: 11.5)).foregroundStyle(Theme.tertiary)
                 Spacer()
                 Button(run.status == .running ? "Hide" : "Done", action: onClose)

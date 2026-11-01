@@ -78,12 +78,11 @@
       }
     },
     "%@ more sits in images no container uses and in volumes. Volumes can hold your databases, so Novra leaves both alone. Remove them in Docker Desktop if you don't need them.": {
-      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ lagi ada di image yang tidak dipakai container dan di volume. Volume bisa berisi database, jadi Novra tidak menyentuh keduanya. Hapus lewat Docker Desktop kalau memang tidak diperlukan."
+            "value": "%@ lagi ada di image yang tidak dipakai container dan di volume. Volume bisa berisi database Anda, jadi Novra tidak menyentuh keduanya. Hapus lewat Docker Desktop kalau tidak diperlukan."
           }
         }
       }
@@ -1147,6 +1146,16 @@
         }
       }
     },
+    "Compacted some databases; %lld failed": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sebagian database dipadatkan; %lld gagal"
+          }
+        }
+      }
+    },
     "Compacting %@…": {
       "localizations": {
         "id": {
@@ -1898,6 +1907,16 @@
         }
       }
     },
+    "Finished.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selesai."
+          }
+        }
+      }
+    },
     "Fix & maintain": {
       "extractionState": "stale",
       "localizations": {
@@ -2115,7 +2134,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Menyiapkan Novra %@"
+            "value": "Mengambil Novra %@"
           }
         }
       }
@@ -3123,7 +3142,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Novra %@ siap dipasang"
+            "value": "Novra %@ siap"
           }
         }
       }
@@ -3235,7 +3254,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Novra akan terbuka lagi sendiri"
+            "value": "Novra terbuka lagi dengan sendirinya"
           }
         }
       }
@@ -3891,12 +3910,11 @@
       }
     },
     "Removes stopped containers, unused networks, dangling images and build cache. Running containers and volumes are kept.": {
-      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Menghapus container yang berhenti, network tak terpakai, image menggantung dan build cache. Container yang berjalan dan volume tetap aman."
+            "value": "Menghapus container yang berhenti, network yang tidak dipakai, image yatim dan cache build. Container yang berjalan dan volume tetap disimpan."
           }
         }
       }
@@ -3952,12 +3970,11 @@
       }
     },
     "Removing stopped containers, unused networks and dangling images…": {
-      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Menghapus container berhenti, network tak terpakai dan image menggantung…"
+            "value": "Menghapus container yang berhenti, network yang tidak dipakai dan image yatim…"
           }
         }
       }
@@ -4027,7 +4044,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mulai Ulang & Perbarui"
+            "value": "Mulai Ulang untuk Memperbarui"
           }
         }
       }
@@ -4999,12 +5016,11 @@
       }
     },
     "Unused images, stopped containers and build cache.": {
-      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Image tak terpakai, container berhenti dan build cache."
+            "value": "Image yang tidak dipakai, container yang berhenti dan cache build."
           }
         }
       }
@@ -5034,7 +5050,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pembaruan belum selesai"
+            "value": "Pembaruan tidak selesai"
           }
         }
       }
@@ -5255,7 +5271,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kamu memakai versi %@. Novra mengunduhnya lalu memulai ulang saat kamu siap, tanpa perlu memberi izin lagi."
+            "value": "Anda memakai versi %@. Novra mengunduhnya dan memulai ulang saat Anda siap, tanpa kehilangan izinnya."
           }
         }
       }

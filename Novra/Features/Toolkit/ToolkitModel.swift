@@ -107,23 +107,23 @@ final class ToolkitModel {
     }
 
     /// Removes macOS metadata files from a drive the user picks under /Volumes.
-    private static func cleanExternalDrive(log: @escaping @Sendable (String) -> Void) async -> Status {
+    private static func cleanExternalDrive(log: @escaping @Sendable (String) -> Void) async -> (Status, Int64) {
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.directoryURL = URL(filePath: "/Volumes")
         panel.prompt = "Clean This Drive"
-        guard panel.runModal() == .OK, let picked = panel.url else { return .idle }
+        guard panel.runModal() == .OK, let picked = panel.url else { return (.idle, 0) }
         // "/Volumes/Macintosh HD" is a link to the startup disk, so resolve it and ask the volume what it is.
         let drive = picked.resolvingSymlinksInPath()
         let info = try? drive.resourceValues(forKeys: [.volumeIsInternalKey, .volumeIsRemovableKey, .volumeIsEjectableKey, .volumeIsRootFileSystemKey])
         guard drive.path.hasPrefix("/Volumes/"), drive.path != "/Volumes", info?.volumeIsRootFileSystem != true,
               info?.volumeIsInternal != true, info?.volumeIsRemovable == true || info?.volumeIsEjectable == true else {
-            return .failed(String(localized: "Pick a USB or external drive"))
+            return (.failed(String(localized: "Pick a USB or external drive")), 0)
         }
         log(String(localized: "Cleaning \(drive.lastPathComponent)…"))
         let report = await Task.detached(priority: .userInitiated) { removeMetadata(on: drive, log: log) }.value
-        return .done("Removed \(report.removed) files · \(report.freed.byteString)")
+        return (.done("Removed \(report.removed) files · \(report.freed.byteString)"), report.freed)
     }
 
     private nonisolated static func removeMetadata(on drive: URL, log: @Sendable (String) -> Void) -> CleanReport {
@@ -146,19 +146,29 @@ final class ToolkitModel {
     }
 
     /// Moves preference files that no longer parse to the Trash.
-    private static func repairPreferences(log: @escaping @Sendable (String) -> Void) async -> Status {
+    private static func repairPreferences(log: @escaping @Sendable (String) -> Void) async -> (Status, Int64) {
         let broken = await Task.detached { () -> [URL] in
             FileSizer.children(of: Cleaner.home.appending(path: "Library/Preferences")).filter { url in
                 guard url.pathExtension == "plist", let data = try? Data(contentsOf: url), !data.isEmpty else { return false }
                 return (try? PropertyListSerialization.propertyList(from: data, format: nil)) == nil
             }
         }.value
-        guard !broken.isEmpty else { return .done("All preference files are healthy") }
+        guard !broken.isEmpty else { return (.done("All preference files are healthy"), 0) }
+        var moved = 0
+        var movedBytes: Int64 = 0
         for url in broken {
             log(String(localized: "Damaged: \(url.lastPathComponent) → Trash"))
-            try? FileManager.default.trashItem(at: url, resultingItemURL: nil)
+            let size = FileSizer.size(url)
+            if (try? FileManager.default.trashItem(at: url, resultingItemURL: nil)) != nil {
+                moved += 1
+                movedBytes += size
+            }
         }
-        return .done("Moved \(broken.count) damaged file\(broken.count == 1 ? "" : "s") to Trash")
+        let failed = broken.count - moved
+        let status: Status = failed == 0
+            ? .done("Moved \(moved) damaged file\(moved == 1 ? "" : "s") to Trash")
+            : .failed("Moved \(moved); couldn't move \(failed) damaged file\(failed == 1 ? "" : "s")")
+        return (status, movedBytes)
     }
 
     /// VACUUMs the big SQLite databases of Apple apps that aren't running.
@@ -175,13 +185,18 @@ final class ToolkitModel {
         targets = targets.filter { FileManager.default.fileExists(atPath: $0.path) }
         guard !targets.isEmpty else { return (.failed(String(localized: "Quit Mail, Safari and Messages first")), 0) }
         var saved: Int64 = 0
+        var failures = 0
         for db in targets {
             let before = FileSizer.size(db)
             log(String(localized: "Compacting \(db.tildePath)…"))
-            _ = await Shell.run("/usr/bin/sqlite3", [db.path, "VACUUM;"])
+            let result = await Shell.run("/usr/bin/sqlite3", [db.path, "VACUUM;"])
+            if !result.ok { failures += 1; log(result.output) }
             let after = FileSizer.size(db)
             log("  \(before.byteString) → \(after.byteString)")
             saved += max(before - after, 0)
+        }
+        if failures > 0 {
+            return (.failed(String(localized: "Compacted some databases; \(failures) failed")), saved)
         }
         return (.done(String(localized: "Saved \(saved.byteString)")), saved)
     }
@@ -233,7 +248,7 @@ final class ToolkitModel {
                 activeRun?.status = outcome
                 activeRun?.freed = freed
             }
-            if case .done = outcome {
+            if case .done = outcome, freed > 0 {
                 let lines = activeRun?.lines ?? []
                 let report = CleanReport(freed: freed, removed: 1, movedToTrash: false,
                                          items: lines.filter { !$0.hasPrefix("$ ") }.prefix(500).map {
@@ -331,13 +346,11 @@ final class ToolkitModel {
             return r.ok ? (.done(String(localized: "Previews reset")), 0) : (.failed(String(localized: "qlmanage failed")), 0)
 
         case .externalDrive:
-            let status = await Self.cleanExternalDrive { line in Task { @MainActor in self.log(line) } }
-            return (status, 0)
+            return await Self.cleanExternalDrive { line in Task { @MainActor in self.log(line) } }
 
         case .preferences:
             log(String(localized: "Checking every file in ~/Library/Preferences…"))
-            let status = await Self.repairPreferences { line in Task { @MainActor in self.log(line) } }
-            return (status, 0)
+            return await Self.repairPreferences { line in Task { @MainActor in self.log(line) } }
 
         case .databases:
             let (status, saved) = await Self.compactDatabases { line in Task { @MainActor in self.log(line) } }

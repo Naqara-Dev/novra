@@ -41,12 +41,26 @@ final class PhotosModel {
     var selectedItems: [PhotoItem] { allItems.filter { selection.contains($0.id) } }
     var selectionSize: Int64 { selectedItems.map(\.size).sum }
 
+    /// Results belong to the source that produced them. Clear them when the picker changes so the
+    /// confirmation text and actions cannot describe a different source than the visible items.
+    func sourceDidChange() {
+        task?.cancel()
+        report = PhotoReport()
+        selection = []
+        hasScanned = false
+        isScanning = false
+        denied = false
+        message = nil
+        swipe = nil
+    }
+
     func scan() {
         task?.cancel()
         message = nil
         task = Task {
             if source == .library {
                 let status = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
+                guard !Task.isCancelled else { return }
                 guard status == .authorized || status == .limited else {
                     denied = true
                     return
@@ -68,6 +82,7 @@ final class PhotosModel {
                     }
                 }
             }.value
+            guard !Task.isCancelled else { return }
             withAnimation(.spring(response: 0.5, dampingFraction: 0.85)) {
                 report = result
                 // Keep the best shot of each group; offer the rest.
@@ -102,7 +117,7 @@ final class PhotosModel {
     }
 
     /// Library photos go to Recently Deleted (macOS asks first); files go to the Trash.
-    func remove() {
+    func remove(toTrash: Bool = Prefs.defaultToTrash) {
         let chosen = selectedItems
         Task {
             var report = CleanReport(movedToTrash: true)
@@ -125,7 +140,7 @@ final class PhotosModel {
             }
             let files = Dictionary(chosen.compactMap { item in item.fileURL.map { ($0, item.size) } }, uniquingKeysWith: { a, _ in a })
             if !files.isEmpty {
-                _ = await Cleaner.remove(files, toTrash: Prefs.defaultToTrash, source: "Photos")
+                _ = await Cleaner.remove(files, toTrash: toTrash, source: "Photos")
             }
             let gone = Set(chosen.filter { item in
                 if let url = item.fileURL { return !FileManager.default.fileExists(atPath: url.path) }

@@ -27,6 +27,7 @@ final class History {
     static let shared = History()
 
     private(set) var records: [CleanRecord] = []
+    private let saveQueue = DispatchQueue(label: "com.naqara.novra.history-save", qos: .utility)
     private let file: URL = {
         // Tests point this elsewhere so they never touch the real history.
         if let custom = ProcessInfo.processInfo.environment["NOVRA_HISTORY_PATH"] { return URL(filePath: custom) }
@@ -86,10 +87,10 @@ final class History {
     }
 
     private func save() {
-        let snapshot = records
+        guard let data = try? JSONEncoder().encode(records) else { return }
         let target = file
-        Task.detached(priority: .utility) {
-            if let data = try? JSONEncoder().encode(snapshot) { try? data.write(to: target, options: .atomic) }
-        }
+        saveQueue.async { try? data.write(to: target, options: .atomic) }
     }
+
+    func waitForPendingSaves() { saveQueue.sync {} }
 }

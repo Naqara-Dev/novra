@@ -45,7 +45,16 @@ enum Cleaner {
     /// Folders Novra must never remove as a whole, plus anything outside
     /// the home folder, /Applications and /Library.
     static func isProtected(_ url: URL) -> Bool {
-        let p = url.standardizedFileURL.path
+        let standardized = url.standardizedFileURL
+        // Resolve symlinks in parent components while keeping a symlink at the leaf as the item
+        // itself. This prevents `safe-link/child` from bypassing a protected target directory.
+        let p: String
+        if standardized.path == "/" {
+            p = "/"
+        } else {
+            p = standardized.deletingLastPathComponent().resolvingSymlinksInPath()
+                .appending(path: standardized.lastPathComponent).standardizedFileURL.path
+        }
         let h = home.path
         let roots = ["/", "/System", "/Library", "/Applications", "/Users", "/usr", "/bin", "/sbin",
                      "/private", "/var", "/etc", "/opt", "/Volumes"]
@@ -101,11 +110,19 @@ enum Cleaner {
             }
         }.value
         if !needsAuth.isEmpty {
-            // Apps in /Applications installed by an admin can go to the Trash through Finder, which asks
-            // for the password itself. Everything else that needs a password is deleted as admin.
-            let viaFinder = toTrash ? needsAuth.keys.filter { $0.path.hasPrefix("/Applications/") } : []
-            let viaAdmin = needsAuth.keys.filter { !viaFinder.contains($0) }
-            if !viaFinder.isEmpty { _ = await finderDelete(viaFinder) }
+            // Finder moves protected files to the user's Trash and asks for authorization. Never
+            // fall back to privileged rm when the user asked for a reversible removal.
+            var trashedByFinder: [URL: String] = [:]
+            if toTrash {
+                for url in needsAuth.keys {
+                    if let path = await finderDelete(url),
+                       !FileManager.default.fileExists(atPath: url.path),
+                       FileManager.default.fileExists(atPath: path) {
+                        trashedByFinder[url] = path
+                    }
+                }
+            }
+            let viaAdmin = toTrash ? [] : Array(needsAuth.keys)
             if !viaAdmin.isEmpty {
                 let quote = { (s: String) in "'" + s.replacingOccurrences(of: "'", with: "'\\''") + "'" }
                 let list = viaAdmin.map { quote($0.path) }.joined(separator: " ")
@@ -116,7 +133,11 @@ enum Cleaner {
             }
             // Judge each item by whether it's actually gone.
             for (url, size) in needsAuth {
-                if !FileManager.default.fileExists(atPath: url.path) {
+                if let trashed = trashedByFinder[url] {
+                    report.freed += size
+                    report.removed += 1
+                    report.items.append(CleanRecord.Item(original: url.path, trashed: trashed, size: size))
+                } else if !toTrash && !FileManager.default.fileExists(atPath: url.path) {
                     report.freed += size
                     report.removed += 1
                     report.items.append(CleanRecord.Item(original: url.path, trashed: nil, size: size))
@@ -125,6 +146,9 @@ enum Cleaner {
                 }
             }
         }
+        let trashPath = trashFolder.path + "/"
+        let purgedExistingTrash = report.items.contains { $0.trashed == nil && $0.original.hasPrefix(trashPath) }
+        report.movedToTrash = report.items.contains { $0.trashed != nil } && !purgedExistingTrash
         await Activity.shared.finish(report)
         await History.shared.add(source: source, report: report)
         return report
@@ -218,9 +242,13 @@ enum Cleaner {
         (try? url.resourceValues(forKeys: [.isSymbolicLinkKey]))?.isSymbolicLink == true
     }
 
-    private static func finderDelete(_ urls: [URL]) async -> Bool {
-        let list = urls.map { "POSIX file \"\(escape($0.path))\"" }.joined(separator: ", ")
-        return await runAppleScript("tell application \"Finder\" to delete {\(list)}")
+    private static func finderDelete(_ url: URL) async -> String? {
+        let file = "POSIX file \"\(escape(url.path))\" as alias"
+        let script = "tell application \"Finder\"\nset trashedItem to delete (\(file))\nreturn POSIX path of (trashedItem as alias)\nend tell"
+        let result = await Shell.run("/usr/bin/osascript", ["-e", script])
+        guard result.ok else { return nil }
+        let path = result.output.trimmingCharacters(in: .whitespacesAndNewlines)
+        return path.isEmpty ? nil : path
     }
 
     /// Permanently empties the user's Trash. Read-only folders (left there by tools like Go) are made

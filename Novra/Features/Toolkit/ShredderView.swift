@@ -1,5 +1,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
+import Darwin
 
 enum Shredder {
     /// Overwrites each file with zeros, then deletes it. Folders are shredded file by file.
@@ -29,21 +30,35 @@ enum Shredder {
 
     private static func overwrite(_ url: URL) {
         // A cloud placeholder has nothing on disk to overwrite; touching it would only download it.
-        var info = stat()
+        var before = stat()
         // Another hard link would lose its content too, so leave those for a plain delete.
-        guard lstat(url.path, &info) == 0, info.st_nlink == 1, !FileSizer.isDataless(url),
+        guard lstat(url.path, &before) == 0, (before.st_mode & S_IFMT) == S_IFREG,
+              before.st_nlink == 1, !FileSizer.isDataless(url),
               (try? url.resourceValues(forKeys: [.isRegularFileKey]))?.isRegularFile == true,
-              let length = (try? url.resourceValues(forKeys: [.fileSizeKey]))?.fileSize,
-              let handle = try? FileHandle(forWritingTo: url) else { return }
-        defer { try? handle.close() }
+              let length = (try? url.resourceValues(forKeys: [.fileSizeKey]))?.fileSize else { return }
+        let fd = url.path.withCString { Darwin.open($0, O_WRONLY | O_NOFOLLOW) }
+        guard fd >= 0 else { return }
+        defer { Darwin.close(fd) }
+        var opened = stat()
+        guard fstat(fd, &opened) == 0, (opened.st_mode & S_IFMT) == S_IFREG,
+              opened.st_dev == before.st_dev, opened.st_ino == before.st_ino,
+              opened.st_nlink == 1, opened.st_size == off_t(length) else { return }
         let chunk = Data(count: 1 << 20)
         var written = 0
         while written < length {
             let n = min(chunk.count, length - written)
-            try? handle.write(contentsOf: chunk.prefix(n))
+            var offset = 0
+            while offset < n {
+                let result = chunk.withUnsafeBytes { bytes -> Int in
+                    guard let base = bytes.baseAddress else { return -1 }
+                    return Darwin.write(fd, base.advanced(by: offset), n - offset)
+                }
+                guard result > 0 else { return }
+                offset += result
+            }
             written += n
         }
-        try? handle.synchronize()
+        _ = fsync(fd)
     }
 }
 

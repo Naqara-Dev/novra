@@ -8,6 +8,8 @@ struct SwipeView: View {
     @State private var index = 0
     @State private var decisions: [(PhotoItem, Bool)] = []
     @State private var drag: CGSize = .zero
+    @State private var advancing = false
+    @State private var advanceTask: Task<Void, Never>?
     @FocusState private var focused: Bool
 
     private var current: PhotoItem? { index < items.count ? items[index] : nil }
@@ -131,25 +133,35 @@ struct SwipeView: View {
     }
 
     private func decide(_ keep: Bool) {
-        guard let item = current else { return }
+        guard let item = current, !advancing else { return }
+        advancing = true
         withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
             drag = CGSize(width: keep ? 600 : -600, height: 0)
         }
         decisions.append((item, keep))
-        Task {
+        advanceTask = Task {
             try? await Task.sleep(for: .milliseconds(160))
+            guard !Task.isCancelled else { return }
             withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
                 drag = .zero
                 index += 1
             }
+            advancing = false
+            advanceTask = nil
         }
     }
 
     private func undo() {
         guard !decisions.isEmpty else { return }
+        if advancing {
+            advanceTask?.cancel()
+            advanceTask = nil
+            advancing = false
+        } else {
+            index = max(index - 1, 0)
+        }
         decisions.removeLast()
         withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
-            index = max(index - 1, 0)
             drag = .zero
         }
     }
