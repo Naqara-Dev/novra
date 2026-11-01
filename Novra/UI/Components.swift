@@ -113,7 +113,6 @@ private struct RingDial: View, @preconcurrency Animatable {
 
 struct SpinningRing: View {
     var lineWidth: CGFloat = 18
-    @State private var spin = false
 
     var body: some View {
         ZStack {
@@ -121,11 +120,8 @@ struct SpinningRing: View {
             Circle()
                 .trim(from: 0, to: 0.28)
                 .stroke(Theme.ring, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
-                .rotationEffect(.degrees(spin ? 360 : 0))
+                .rotating(period: 1.1)
                 .shadow(color: Theme.accent.opacity(0.55), radius: 14)
-        }
-        .onAppear {
-            withAnimation(.linear(duration: 1.1).repeatForever(autoreverses: false)) { spin = true }
         }
     }
 }
@@ -418,20 +414,21 @@ struct StaleBadge: View {
 }
 
 struct RunningBadge: View {
-    @State private var pulse = false
-
     var body: some View {
         HStack(spacing: 5) {
-            Circle().fill(Theme.green).frame(width: 6, height: 6)
-                .scaleEffect(pulse ? 1.3 : 0.8)
-                .opacity(pulse ? 1 : 0.6)
+            LoopView { date in
+                let pulse = Loop.breath(date, period: 1.8)
+                Circle().fill(Theme.green).frame(width: 6, height: 6)
+                    .scaleEffect(0.8 + 0.5 * pulse)
+                    .opacity(0.6 + 0.4 * pulse)
+            }
+            .frame(width: 6, height: 6)
             Text("Running").font(.system(size: 10.5, weight: .semibold))
         }
         .foregroundStyle(Theme.green)
         .padding(.horizontal, 7).padding(.vertical, 2)
         .background(Capsule().fill(Theme.green.opacity(0.14)))
         .fixedSize()
-        .onAppear { withAnimation(.easeInOut(duration: 0.9).repeatForever()) { pulse = true } }
     }
 }
 

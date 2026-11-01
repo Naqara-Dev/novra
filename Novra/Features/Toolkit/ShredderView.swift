@@ -54,7 +54,6 @@ struct ShredderView: View {
     @State private var confirming = false
     @State private var working = false
     @State private var report: CleanReport?
-    @State private var dash: CGFloat = 0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -123,13 +122,14 @@ struct ShredderView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 210)
         .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(targeted ? Color(hex: 0xFF5A8A).opacity(0.1) : Theme.card))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .strokeBorder(targeted ? Color(hex: 0xFF5A8A) : .white.opacity(0.2),
-                              style: StrokeStyle(lineWidth: 1.5, dash: [8, 6], dashPhase: dash))
-        )
+        .overlay {
+            LoopView { date in
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .strokeBorder(targeted ? Color(hex: 0xFF5A8A) : .white.opacity(0.2),
+                                  style: StrokeStyle(lineWidth: 1.5, dash: [8, 6], dashPhase: -56 * Loop.phase(date, period: 3)))
+            }
+        }
         .animation(.spring(response: 0.3, dampingFraction: 0.6), value: targeted)
-        .onAppear { withAnimation(.linear(duration: 3).repeatForever(autoreverses: false)) { dash = -56 } }
         .onDrop(of: [.fileURL], isTargeted: $targeted) { providers in
             for provider in providers {
                 _ = provider.loadObject(ofClass: URL.self) { url, _ in

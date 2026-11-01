@@ -91,7 +91,6 @@ private struct HeroCard: View {
     var tool: Tool
     var action: () -> Void
     @State private var hover = false
-    @State private var spin = false
 
     var body: some View {
         Button(action: action) {
@@ -110,7 +109,7 @@ private struct HeroCard: View {
                         .frame(width: 104, height: 104)
                     Image(systemName: "magnifyingglass").font(.system(size: 30, weight: .semibold))
                 }
-                .rotationEffect(.degrees(spin ? 360 : 0))
+                .rotating(period: 40)
                 .scaleEffect(hover ? 1.06 : 1)
                 .frame(maxWidth: .infinity)
                 .padding(.top, 34)
@@ -140,7 +139,6 @@ private struct HeroCard: View {
         .buttonStyle(.plain)
         .onHover { hover = $0 }
         .animation(.spring(response: 0.35, dampingFraction: 0.7), value: hover)
-        .onAppear { withAnimation(.linear(duration: 40).repeatForever(autoreverses: false)) { spin = true } }
     }
 }
 

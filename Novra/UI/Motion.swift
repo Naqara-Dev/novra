@@ -62,26 +62,69 @@ extension View {
     func reveal(index: Int, step: Double = 0.035) -> some View { reveal(delay: Double(min(index, 14)) * step) }
 }
 
+// MARK: - Loops
+
+/// Loops driven by the clock instead of a repeating `withAnimation` in `onAppear`. A repeating animation
+/// started while a transition runs can capture it: the view wobbles, or when it's removed the transition
+/// never ends and a faded copy stays on screen.
+enum Loop {
+    /// Goes 0 → 1 once per period, then starts over.
+    static func phase(_ date: Date, period: Double) -> Double {
+        let t = date.timeIntervalSinceReferenceDate / period
+        return t - t.rounded(.down)
+    }
+
+    /// Eases 0 → 1 → 0 once per period.
+    static func breath(_ date: Date, period: Double) -> Double {
+        (1 - cos(phase(date, period: period) * 2 * .pi)) / 2
+    }
+
+    /// Ease in and out over 0…1.
+    static func ease(_ x: Double) -> Double { x < 0.5 ? 2 * x * x : 1 - pow(-2 * x + 2, 2) / 2 }
+}
+
+/// Redraws its content every frame with the current time. Holds still when Reduce Motion is on.
+struct LoopView<Content: View>: View {
+    @ViewBuilder var content: (Date) -> Content
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    var body: some View {
+        TimelineView(.animation(paused: reduceMotion)) { context in content(context.date) }
+    }
+}
+
+private struct Rotating: ViewModifier {
+    var period: Double
+
+    func body(content: Content) -> some View {
+        LoopView { date in content.rotationEffect(.degrees(Loop.phase(date, period: period) * 360)) }
+    }
+}
+
+extension View {
+    /// Turns the view a full circle every `period` seconds.
+    func rotating(period: Double) -> some View { modifier(Rotating(period: period)) }
+}
+
 // MARK: - Shimmer
 
 /// A soft light sweep across the view, used on the main call-to-action.
 private struct Shimmer: ViewModifier {
-    @State private var phase: CGFloat = -1
-
     func body(content: Content) -> some View {
         content
             .overlay {
                 GeometryReader { geo in
-                    LinearGradient(colors: [.clear, .white.opacity(0.55), .clear], startPoint: .leading, endPoint: .trailing)
-                        .frame(width: geo.size.width * 0.45)
-                        .offset(x: phase * geo.size.width * 1.6)
-                        .blendMode(.overlay)
+                    LoopView { date in
+                        // A 2.4 s sweep from -1 to 1.2, then 0.6 s of rest off the right edge.
+                        let sweep = min(Loop.phase(date, period: 3) * 3 / 2.4, 1)
+                        LinearGradient(colors: [.clear, .white.opacity(0.55), .clear], startPoint: .leading, endPoint: .trailing)
+                            .frame(width: geo.size.width * 0.45)
+                            .offset(x: (-1 + 2.2 * Loop.ease(sweep)) * geo.size.width * 1.6)
+                            .blendMode(.overlay)
+                    }
                 }
                 .mask(content)
                 .allowsHitTesting(false)
-            }
-            .onAppear {
-                withAnimation(.easeInOut(duration: 2.4).delay(0.6).repeatForever(autoreverses: false)) { phase = 1.2 }
             }
     }
 }
@@ -95,43 +138,41 @@ extension View {
 /// A glow that softly breathes behind a ring while work is in progress.
 struct BreathingHalo: View {
     var color: Color = Theme.accent
-    @State private var big = false
 
     var body: some View {
-        GeometryReader { geo in
-            // Fade out fully before the frame's edge, so the glow never shows a rim.
-            let radius = min(geo.size.width, geo.size.height) / 2
-            Circle()
-                .fill(RadialGradient(colors: [color.opacity(0.35), color.opacity(0.12), .clear],
-                                     center: .center, startRadius: 0, endRadius: radius * 0.85))
-        }
-            .scaleEffect(big ? 1.12 : 0.92)
-            .opacity(big ? 1 : 0.55)
-            .onAppear {
-                withAnimation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true)) { big = true }
+        LoopView { date in
+            let breath = Loop.breath(date, period: 3.6)
+            GeometryReader { geo in
+                // Fade out fully before the frame's edge, so the glow never shows a rim.
+                let radius = min(geo.size.width, geo.size.height) / 2
+                Circle()
+                    .fill(RadialGradient(colors: [color.opacity(0.35), color.opacity(0.12), .clear],
+                                         center: .center, startRadius: 0, endRadius: radius * 0.85))
             }
-            .allowsHitTesting(false)
+            .scaleEffect(0.92 + 0.2 * breath)
+            .opacity(0.55 + 0.45 * breath)
+        }
+        .allowsHitTesting(false)
     }
 }
 
 /// A bright point that orbits a ring.
 struct OrbitingSpark: View {
     var lineWidth: CGFloat
-    @State private var angle: Double = 0
 
     var body: some View {
         GeometryReader { geo in
             let r = min(geo.size.width, geo.size.height) / 2
-            Circle()
-                .fill(.white)
-                .frame(width: lineWidth * 0.55, height: lineWidth * 0.55)
-                .shadow(color: .white, radius: 8)
-                .shadow(color: Theme.accent, radius: 16)
-                .offset(x: r * cos(angle * .pi / 180), y: r * sin(angle * .pi / 180))
-                .frame(width: geo.size.width, height: geo.size.height)
-        }
-        .onAppear {
-            withAnimation(.linear(duration: 2.2).repeatForever(autoreverses: false)) { angle = 360 }
+            LoopView { date in
+                let angle = Loop.phase(date, period: 2.2) * 2 * .pi
+                Circle()
+                    .fill(.white)
+                    .frame(width: lineWidth * 0.55, height: lineWidth * 0.55)
+                    .shadow(color: .white, radius: 8)
+                    .shadow(color: Theme.accent, radius: 16)
+                    .offset(x: r * cos(angle), y: r * sin(angle))
+                    .frame(width: geo.size.width, height: geo.size.height)
+            }
         }
         .allowsHitTesting(false)
     }

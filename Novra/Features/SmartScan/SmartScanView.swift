@@ -200,7 +200,7 @@ private struct CategoryTile: View {
                         .trim(from: 0, to: 0.3)
                         .stroke(kind.tint, style: StrokeStyle(lineWidth: 2, lineCap: .round))
                         .frame(width: 44, height: 44)
-                        .modifier(Spin())
+                        .rotating(period: 0.9)
                 }
             }
             .frame(width: 46, height: 46)
@@ -237,16 +237,6 @@ private struct CategoryTile: View {
         .scaleEffect(active ? 1.04 : 1)
         .animation(.spring(response: 0.4, dampingFraction: 0.7), value: active)
         .animation(.spring(response: 0.4, dampingFraction: 0.6), value: done)
-    }
-}
-
-private struct Spin: ViewModifier {
-    @State private var on = false
-
-    func body(content: Content) -> some View {
-        content
-            .rotationEffect(.degrees(on ? 360 : 0))
-            .onAppear { withAnimation(.linear(duration: 0.9).repeatForever(autoreverses: false)) { on = true } }
     }
 }
 
