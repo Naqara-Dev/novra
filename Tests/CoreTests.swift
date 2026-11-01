@@ -180,6 +180,8 @@ extension CoreTests {
         let brew = "==> This operation has freed approximately 120.5MB of disk space."
         check(abs(Double(Shell.parseSizes(brew, marker: "freed approximately")) - 120.5e6) < 1e3, "reads Homebrew's freed space")
         check(Shell.parseSizes("Total reclaimed space: 0B", marker: "reclaimed space") == 0, "zero stays zero")
+        let builder = "ID\t\tRECLAIMABLE\tSIZE\nabc123\ttrue\t12MB\nTotal:\t869.9MB"
+        check(abs(Double(Shell.parseSizes(builder, marker: "total")) - 869.9e6) < 1e3, "reads docker builder prune's total")
     }
 }
 

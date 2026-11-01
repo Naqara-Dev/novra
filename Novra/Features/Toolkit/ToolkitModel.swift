@@ -39,9 +39,8 @@ final class ToolkitModel {
             facts[.snapshots] = count == 0 ? "None" : "\(count) snapshot\(count == 1 ? "" : "s")"
 
             if let docker = Self.docker {
-                let df = await Shell.run(docker, ["system", "df", "--format", "{{.Reclaimable}}"])
-                if df.ok {
-                    facts[.docker] = Self.sumReclaimable(df.output).map { "\($0.byteString) reclaimable" }
+                if let usage = await Self.dockerUsage(docker) {
+                    facts[.docker] = usage.prunable > 0 ? "\(usage.prunable.byteString) reclaimable" : "Already tidy"
                 } else {
                     facts[.docker] = "Docker isn't running"
                 }
@@ -71,6 +70,25 @@ final class ToolkitModel {
                 facts[.simulators] = count == 0 ? "None" : "\(count) to remove"
             }
         }
+    }
+
+    /// Space the prune commands can free (stopped containers, dangling images, unused build cache) and space
+    /// they leave alone: tagged images no container uses, and volumes, which can hold a database.
+    private static func dockerUsage(_ docker: String) async -> (prunable: Int64, kept: Int64)? {
+        let df = await Shell.run(docker, ["system", "df", "--format", "{{.Type}}\t{{.Reclaimable}}"])
+        guard df.ok else { return nil }
+        let dangling = await Shell.run(docker, ["images", "--filter", "dangling=true", "--format", "{{.Size}}"])
+        let danglingSize = sumReclaimable(dangling.output) ?? 0
+        var prunable = danglingSize, kept = -danglingSize
+        for line in df.output.split(separator: "\n") {
+            let parts = line.split(separator: "\t", maxSplits: 1)
+            guard parts.count == 2, let size = sumReclaimable(String(parts[1])) else { continue }
+            switch parts[0] {
+            case "Containers", "Build Cache": prunable += size
+            default: kept += size
+            }
+        }
+        return (prunable, max(kept, 0))
     }
 
     /// Adds up Docker's "1.2GB (45%)" style values.
@@ -236,8 +254,11 @@ final class ToolkitModel {
             guard prune.ok else { return (.failed(String(localized: "Is Docker running?")), 0) }
             log(String(localized: "Removing build cache…"))
             let builder = await stream(docker, ["builder", "prune", "-f"])
-            let freed = Shell.parseSizes(prune.output + "\n" + builder.output, marker: "reclaimed space")
-            return (.done(String(localized: "Freed \(freed.byteString)")), freed)
+            let freed = Shell.parseSizes(prune.output, marker: "reclaimed space") + Shell.parseSizes(builder.output, marker: "total")
+            if let usage = await Self.dockerUsage(docker), usage.kept > 0 {
+                log(String(localized: "\(usage.kept.byteString) more sits in images no container uses and in volumes. Volumes can hold your databases, so Novra leaves both alone. Remove them in Docker Desktop if you don't need them."))
+            }
+            return (.done(freed > 0 ? String(localized: "Freed \(freed.byteString)") : String(localized: "Already tidy")), freed)
 
         case .homebrew:
             guard let brew = Self.brew else { return (.failed(String(localized: "Homebrew isn't installed")), 0) }

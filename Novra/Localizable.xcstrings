@@ -77,6 +77,16 @@
         }
       }
     },
+    "%@ more sits in images no container uses and in volumes. Volumes can hold your databases, so Novra leaves both alone. Remove them in Docker Desktop if you don't need them.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ lagi ada di image yang tidak dipakai container dan di volume. Volume bisa berisi database, jadi Novra tidak menyentuh keduanya. Hapus lewat Docker Desktop kalau memang tidak diperlukan."
+          }
+        }
+      }
+    },
     "%@ of %@": {
       "localizations": {
         "en": {
