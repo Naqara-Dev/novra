@@ -47,7 +47,7 @@ enum Tool: String, CaseIterable, Identifiable {
         switch self {
         case .spaceLens: String(localized: "See your disk as a map. Dive into any folder and pick what goes.")
         case .memory: String(localized: "Live memory use, and the apps holding the most.")
-        case .docker: String(localized: "Unused images, stopped containers and build cache.")
+        case .docker: String(localized: "Dangling images and build cache.")
         case .homebrew: String(localized: "Old package versions, downloads and dependencies nothing needs anymore.")
         case .nix: String(localized: "Store paths no profile or project uses anymore.")
         case .externalDrive: String(localized: "Remove ._ files, .DS_Store and temp folders macOS leaves on USB drives.")
@@ -127,7 +127,7 @@ enum Tool: String, CaseIterable, Identifiable {
     /// Shown before running; nil runs right away.
     var confirmation: String? {
         switch self {
-        case .docker: String(localized: "Removes stopped containers, unused networks, dangling images and build cache. Running containers and volumes are kept.")
+        case .docker: String(localized: "Removes dangling images and build cache. Containers, running or stopped, and volumes are never touched.")
         case .snapshots: String(localized: "Deletes local Time Machine snapshots on this Mac. Backups on your backup disk are not touched. macOS will ask for your password.")
         case .simulators: String(localized: "Deletes simulators whose iOS runtime is no longer installed. Their apps and data go with them.")
         case .trash: String(localized: "Everything in the Trash is deleted for good.")

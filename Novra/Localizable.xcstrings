@@ -78,11 +78,22 @@
       }
     },
     "%@ more sits in images no container uses and in volumes. Volumes can hold your databases, so Novra leaves both alone. Remove them in Docker Desktop if you don't need them.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
             "value": "%@ lagi ada di image yang tidak dipakai container dan di volume. Volume bisa berisi database, jadi Novra tidak menyentuh keduanya. Hapus lewat Docker Desktop kalau memang tidak diperlukan."
+          }
+        }
+      }
+    },
+    "%@ more sits in stopped containers, images no container uses and volumes. These can hold your databases, so Novra leaves them alone. Remove them in Docker Desktop if you don't need them.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ lagi ada di container yang berhenti, image yang tidak dipakai container, dan volume. Semuanya bisa berisi database Anda, jadi Novra membiarkannya. Hapus lewat Docker Desktop jika memang tidak diperlukan."
           }
         }
       }
@@ -1283,6 +1294,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rusak: %@ → Tong Sampah"
+          }
+        }
+      }
+    },
+    "Dangling images and build cache.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image menggantung dan build cache."
           }
         }
       }
@@ -3067,6 +3088,7 @@
       "shouldTranslate": false
     },
     "Novra %@": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
@@ -3848,6 +3870,16 @@
         }
       }
     },
+    "Removes dangling images and build cache. Containers, running or stopped, and volumes are never touched.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus image menggantung dan build cache. Container, yang berjalan maupun yang berhenti, dan volume tidak pernah disentuh."
+          }
+        }
+      }
+    },
     "Removes duplicate apps from the Open With menu.": {
       "localizations": {
         "id": {
@@ -3859,6 +3891,7 @@
       }
     },
     "Removes stopped containers, unused networks, dangling images and build cache. Running containers and volumes are kept.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
@@ -3888,6 +3921,16 @@
         }
       }
     },
+    "Removing dangling images…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghapus image menggantung…"
+          }
+        }
+      }
+    },
     "Removing dependencies nothing needs…": {
       "localizations": {
         "id": {
@@ -3909,6 +3952,7 @@
       }
     },
     "Removing stopped containers, unused networks and dangling images…": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {
@@ -4955,6 +4999,7 @@
       }
     },
     "Unused images, stopped containers and build cache.": {
+      "extractionState": "stale",
       "localizations": {
         "id": {
           "stringUnit": {

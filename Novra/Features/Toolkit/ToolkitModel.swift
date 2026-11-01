@@ -72,8 +72,9 @@ final class ToolkitModel {
         }
     }
 
-    /// Space the prune commands can free (stopped containers, dangling images, unused build cache) and space
-    /// they leave alone: tagged images no container uses, and volumes, which can hold a database.
+    /// Space the prune commands can free (dangling images, unused build cache) and space they leave alone:
+    /// containers, stopped ones included, tagged images no container uses, and volumes. A stopped container
+    /// can be a database someone starts every morning, so Novra never removes containers.
     private static func dockerUsage(_ docker: String) async -> (prunable: Int64, kept: Int64)? {
         let df = await Shell.run(docker, ["system", "df", "--format", "{{.Type}}\t{{.Reclaimable}}"])
         guard df.ok else { return nil }
@@ -84,7 +85,7 @@ final class ToolkitModel {
             let parts = line.split(separator: "\t", maxSplits: 1)
             guard parts.count == 2, let size = sumReclaimable(String(parts[1])) else { continue }
             switch parts[0] {
-            case "Containers", "Build Cache": prunable += size
+            case "Build Cache": prunable += size
             default: kept += size
             }
         }
@@ -249,14 +250,14 @@ final class ToolkitModel {
         switch tool {
         case .docker:
             guard let docker = Self.docker else { return (.failed(String(localized: "Docker isn't installed")), 0) }
-            log(String(localized: "Removing stopped containers, unused networks and dangling images…"))
-            let prune = await stream(docker, ["system", "prune", "-f"])
+            log(String(localized: "Removing dangling images…"))
+            let prune = await stream(docker, ["image", "prune", "-f"])
             guard prune.ok else { return (.failed(String(localized: "Is Docker running?")), 0) }
             log(String(localized: "Removing build cache…"))
             let builder = await stream(docker, ["builder", "prune", "-f"])
             let freed = Shell.parseSizes(prune.output, marker: "reclaimed space") + Shell.parseSizes(builder.output, marker: "total")
             if let usage = await Self.dockerUsage(docker), usage.kept > 0 {
-                log(String(localized: "\(usage.kept.byteString) more sits in images no container uses and in volumes. Volumes can hold your databases, so Novra leaves both alone. Remove them in Docker Desktop if you don't need them."))
+                log(String(localized: "\(usage.kept.byteString) more sits in stopped containers, images no container uses and volumes. These can hold your databases, so Novra leaves them alone. Remove them in Docker Desktop if you don't need them."))
             }
             return (.done(freed > 0 ? String(localized: "Freed \(freed.byteString)") : String(localized: "Already tidy")), freed)
 
