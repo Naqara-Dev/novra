@@ -160,11 +160,13 @@ private struct AboutSettings: View {
                 Button("Report an Issue") { SystemInfo.open(SystemInfo.issues) }
                 Button("naqara.dev") { SystemInfo.open("https://naqara.dev") }
             }
-            if let status = Updates.shared.status {
+            if let progress = Updates.shared.phaseSummary {
+                Text(progress).font(.system(size: 12)).foregroundStyle(.secondary).monospacedDigit()
+            } else if let status = Updates.shared.status {
                 HStack(spacing: 8) {
                     Text(status).font(.system(size: 12))
                     if Updates.shared.available != nil {
-                        Button("Download") { Updates.shared.download() }.buttonStyle(.link)
+                        Button("Update") { Updates.shared.download() }.buttonStyle(.link)
                     }
                 }
             }

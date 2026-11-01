@@ -66,7 +66,8 @@ The app is available in English and Bahasa Indonesia.
 > - Open **System Settings › Privacy & Security**, scroll down, and click **Open Anyway** next to Novra.
 > - Or run this in Terminal: `xattr -dr com.apple.quarantine /Applications/Novra.app`
 >
-> Because the app isn't signed with a Developer ID, macOS may ask you to grant **Full Disk Access** again after each update.
+> From 1.1.4 on, updates install from inside Novra and keep its permissions. Coming from 1.1.3 or older, macOS asks
+> for **Full Disk Access** one last time, because releases are now signed with a fixed certificate instead of ad hoc.
 > Verify the download with the SHA-256 listed on the release page.
 
 **Build from source:** you need Xcode 16 or newer.
@@ -88,9 +89,14 @@ open build/Build/Products/Release/Novra.app
 
 Once a day, Novra asks GitHub's public API for the latest release number
 (`api.github.com/repos/Naqara-Dev/novra/releases/latest`). It uses an ephemeral session with no cookies or IDs,
-and sends nothing about you or your Mac. If a newer version exists, a small card in the sidebar links to the download.
+and sends nothing about you or your Mac. If a newer version exists, a small card in the sidebar offers it.
 You can also check from **Novra › Check for Updates…**, or turn the automatic check off in
 **Settings › General** or during onboarding.
+
+Click **Update** and Novra installs it in place with [Sparkle](https://sparkle-project.org): it downloads
+`appcast.xml` and the `.dmg` from the GitHub release, checks the EdDSA signature against the public key built into
+the app, swaps the app and relaunches. Every release is signed with the same certificate, so macOS keeps Novra's
+permissions. Nothing is downloaded until you click Update.
 
 ## Permissions, and why
 

@@ -13,7 +13,17 @@ struct NovraApp: App {
                 .frame(minWidth: 1040, minHeight: 680)
                 .onAppear {
                     LowDiskWatcher.shared.start()
+                    AppUpdater.activate()
                     Updates.shared.start()
+                    #if DEBUG
+                    // `-NovraTestRemove <path>` moves one item to the Trash on launch, to watch the removal overlay.
+                    if let path = UserDefaults.standard.string(forKey: "NovraTestRemove") {
+                        Task {
+                            try? await Task.sleep(for: .seconds(2))
+                            _ = await Cleaner.remove([URL(filePath: path): 0], toTrash: true, source: "Test")
+                        }
+                    }
+                    #endif
                 }
         }
         .windowStyle(.hiddenTitleBar)

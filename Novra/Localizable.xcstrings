@@ -925,6 +925,16 @@
         }
       }
     },
+    "Checking it's signed by Naqara Dev": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memastikan ditandatangani Naqara Dev"
+          }
+        }
+      }
+    },
     "Checks your startup disk for errors. Read-only.": {
       "localizations": {
         "id": {
@@ -1142,6 +1152,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kompres"
+          }
+        }
+      }
+    },
+    "Connecting…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menghubungkan…"
           }
         }
       }
@@ -1500,6 +1520,16 @@
         }
       }
     },
+    "Dismiss": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutup"
+          }
+        }
+      }
+    },
     "Docker Cleanup": {
       "localizations": {
         "id": {
@@ -1569,6 +1599,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dependensi yang diunduh. Gradle mengunduh ulang saat perlu."
+          }
+        }
+      }
+    },
+    "Downloading Novra %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengunduh Novra %@"
+          }
+        }
+      }
+    },
+    "Downloading…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengunduh…"
+          }
+        }
+      }
+    },
+    "Downloading… %lld%%": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengunduh… %lld%%"
           }
         }
       }
@@ -2029,6 +2089,16 @@
         }
       }
     },
+    "Getting Novra %@": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menyiapkan Novra %@"
+          }
+        }
+      }
+    },
     "GitHub": {
       "shouldTranslate": false
     },
@@ -2201,6 +2271,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Installer"
+          }
+        }
+      }
+    },
+    "Installing": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memasang"
+          }
+        }
+      }
+    },
+    "Installing…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memasang…"
           }
         }
       }
@@ -3006,6 +3096,16 @@
         }
       }
     },
+    "Novra %@ is ready": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra %@ siap dipasang"
+          }
+        }
+      }
+    },
     "Novra can't see your photos": {
       "localizations": {
         "id": {
@@ -3104,6 +3204,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Novra di naqara.dev"
+          }
+        }
+      }
+    },
+    "Novra reopens by itself": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novra akan terbuka lagi sendiri"
           }
         }
       }
@@ -3466,6 +3576,16 @@
         }
       }
     },
+    "Preparing the update…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menyiapkan pembaruan…"
+          }
+        }
+      }
+    },
     "Previews reset": {
       "localizations": {
         "id": {
@@ -3594,6 +3714,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Encode ulang ke HEVC 1080p. File asli masuk Tong Sampah atau Baru Dihapus."
+          }
+        }
+      }
+    },
+    "Ready to install": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siap dipasang"
           }
         }
       }
@@ -3844,6 +3974,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mulai Ulang"
+          }
+        }
+      }
+    },
+    "Restart to Update": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai Ulang & Perbarui"
+          }
+        }
+      }
+    },
+    "Restart to finish. It takes a few seconds.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai ulang untuk menyelesaikan. Hanya beberapa detik."
           }
         }
       }
@@ -4421,6 +4571,16 @@
         }
       }
     },
+    "Starting…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memulai…"
+          }
+        }
+      }
+    },
     "Startup Items": {
       "localizations": {
         "id": {
@@ -4573,6 +4733,16 @@
         }
       }
     },
+    "The update isn't ready yet. Try again in a few minutes.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pembaruan belum siap. Coba lagi beberapa menit lagi."
+          }
+        }
+      }
+    },
     "There's nothing inside, or Novra can't read it.": {
       "localizations": {
         "id": {
@@ -4693,6 +4863,16 @@
         }
       }
     },
+    "Try again": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coba lagi"
+          }
+        }
+      }
+    },
     "Turn on Novra in the list. Use + to add it if it's missing.": {
       "localizations": {
         "id": {
@@ -4784,12 +4964,32 @@
         }
       }
     },
+    "Update": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbarui"
+          }
+        }
+      }
+    },
     "Update available": {
       "localizations": {
         "id": {
           "stringUnit": {
             "state": "translated",
             "value": "Pembaruan tersedia"
+          }
+        }
+      }
+    },
+    "Update didn't finish": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pembaruan belum selesai"
           }
         }
       }
@@ -4830,6 +5030,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verifikasi Disk"
+          }
+        }
+      }
+    },
+    "Verifying": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memverifikasi"
+          }
+        }
+      }
+    },
+    "Verifying the update…": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memverifikasi pembaruan…"
           }
         }
       }
@@ -4981,6 +5201,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anda memakai versi %@. Unduh versi baru dari GitHub?"
+          }
+        }
+      }
+    },
+    "You have version %@. Novra downloads it and restarts when you're ready, keeping its permissions.": {
+      "localizations": {
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamu memakai versi %@. Novra mengunduhnya lalu memulai ulang saat kamu siap, tanpa perlu memberi izin lagi."
           }
         }
       }

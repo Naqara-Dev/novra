@@ -11,8 +11,47 @@ final class Updates {
         let download: URL?
     }
 
+    /// Where an in-place update is. The updater reports it; the update card draws it.
+    enum Phase: Equatable {
+        case idle
+        case preparing
+        case downloading(received: Int64, total: Int64)
+        case verifying
+        case ready
+        case installing
+        case failed(String)
+    }
+
     var available: Release?
     var checking = false
+    var phase: Phase = .idle
+    /// Set by the updater (Sparkle): start an in-place update, stop it, or quit into the new version.
+    /// Without an installer, Update opens the release on GitHub.
+    var installer: (@MainActor () -> Void)?
+    var cancelUpdate: (@MainActor () -> Void)?
+    var restartToUpdate: (@MainActor () -> Void)?
+
+    var isUpdating: Bool {
+        switch phase {
+        case .idle, .failed: false
+        default: true
+        }
+    }
+
+    /// One line for the current phase, for places without room for the full card.
+    var phaseSummary: String? {
+        switch phase {
+        case .idle: nil
+        case .preparing: String(localized: "Preparing the update…")
+        case .downloading(let received, let total):
+            total > 0 ? String(localized: "Downloading… \(Int(Double(received) / Double(total) * 100))%")
+                      : String(localized: "Downloading…")
+        case .verifying: String(localized: "Verifying the update…")
+        case .ready: String(localized: "Ready to install")
+        case .installing: String(localized: "Installing…")
+        case .failed(let reason): reason
+        }
+    }
     /// Last outcome, shown in Settings › About.
     var status: String?
 
@@ -86,6 +125,7 @@ final class Updates {
     }
 
     func download() {
+        if let installer { return installer() }
         guard let release = available else { return }
         NSWorkspace.shared.open(release.download ?? release.page)
     }
@@ -108,8 +148,10 @@ final class Updates {
             let alert = NSAlert()
             if let release {
                 alert.messageText = String(localized: "Novra \(release.version) is available")
-                alert.informativeText = String(localized: "You have version \(Self.currentVersion). Download the new version from GitHub?")
-                alert.addButton(withTitle: String(localized: "Download"))
+                alert.informativeText = installer != nil
+                    ? String(localized: "You have version \(Self.currentVersion). Novra downloads it and restarts when you're ready, keeping its permissions.")
+                    : String(localized: "You have version \(Self.currentVersion). Download the new version from GitHub?")
+                alert.addButton(withTitle: installer != nil ? String(localized: "Update") : String(localized: "Download"))
                 alert.addButton(withTitle: String(localized: "Later"))
                 if alert.runModal() == .alertFirstButtonReturn { download() }
             } else {
